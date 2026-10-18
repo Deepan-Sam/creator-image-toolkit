@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Batch Image Resizer | CreatorImageKit</title>
+<meta name="description" content="Resize multiple JPG, PNG, and WebP images together with consistent dimensions and format. Process images locally in your browser for free.">
+<link rel="canonical" href="https://creatorimagekit.com/batch-image-resizer.html">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Creator Image Toolkit">
+<meta property="og:title" content="Free Batch Image Resizer | CreatorImageKit">
+<meta property="og:description" content="Resize multiple images at once in your browser. Choose dimensions, fit mode, and output format.">
+<meta property="og:url" content="https://creatorimagekit.com/batch-image-resizer.html">
+<meta name="twitter:card" content="summary">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1321029480431173" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="batch-image-resizer.css">
+<script src="site.js" defer></script>
+<script src="batch-image-resizer.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header"><div class="container header-inner">
+<a class="brand" href="index.html#top" aria-label="Creator Image Toolkit home"><span class="brand-mark" aria-hidden="true">◈</span><span class="brand-name">Creator <span>Image Toolkit</span></span></a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="nav-toggle-label">Menu</span></button>
+<nav class="site-nav" id="site-nav" aria-label="Main navigation"><ul><li><a href="index.html#tools">Tools</a></li><li><a href="index.html#how-it-works">How it works</a></li><li><a href="index.html#guides">Guides</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
+</div></header>
+<main id="main" class="seo-page"><article class="container batch-page">
+<nav class="seo-breadcrumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> <span aria-hidden="true">/</span> Batch Image Resizer</nav>
+<p class="eyebrow">Free image tool</p><h1>Batch Image Resizer</h1>
+<p class="seo-lead">Resize multiple images with the same dimensions and output settings in one workflow. Your images are processed locally in this browser and are not uploaded to a server.</p>
+<section class="card batch-card" aria-labelledby="batch-controls-title">
+<h2 id="batch-controls-title">1. Choose images</h2>
+<label class="batch-upload" for="batch-files"><strong>Select multiple images</strong><span>JPG, PNG, or WebP · Up to 20 MB per file · 40 megapixels per image</span><input id="batch-files" type="file" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" multiple></label>
+<p id="batch-status" class="batch-status" role="status" aria-live="polite">Select one or more images to begin.</p>
+<div id="batch-list" class="batch-list"></div>
+<div class="batch-settings">
+<h2>2. Resize settings</h2>
+<div class="batch-fields">
+<label>Width (px)<input id="batch-width" type="number" min="1" max="16384" value="1200" inputmode="numeric"></label>
+<label>Height (px)<input id="batch-height" type="number" min="1" max="16384" value="1200" inputmode="numeric"></label>
+<label>Fit mode<select id="batch-fit"><option value="contain">Fit inside (keep full image)</option><option value="cover">Fill dimensions (crop edges)</option><option value="stretch">Stretch to exact size</option></select></label>
+<label>Output format<select id="batch-format"><option value="image/jpeg">JPEG</option><option value="image/png">PNG</option><option value="image/webp">WebP</option><option value="original">Keep original format</option></select></label>
+<label>Quality <span class="batch-range"><input id="batch-quality" type="range" min="50" max="100" value="88"><output id="batch-quality-value" for="batch-quality">88%</output></span><small>Applies to JPEG and WebP. PNG is lossless.</small></label>
+</div>
+<div class="batch-actions"><button id="batch-process" class="button button-primary" type="button" disabled>Resize all images</button><button id="batch-clear" class="button button-secondary" type="button" disabled>Clear list</button></div>
+</div>
+</section>
+<section class="batch-results" aria-labelledby="batch-results-title"><h2 id="batch-results-title">3. Download resized images</h2><p>Each finished image will appear here with its own download link.</p><div id="batch-results" class="batch-result-grid"></div></section>
+<section class="content-section"><h2>How batch resizing works</h2><ol><li>Select multiple JPG, PNG, or WebP images.</li><li>Set shared dimensions, fit mode, and output format.</li><li>Choose Resize all images and download each result.</li></ol><p><strong>Privacy:</strong> Processing happens on your device. This tool does not upload selected images. Very large batches may use significant browser memory, so process smaller groups if your device slows down.</p><p><strong>Fit modes:</strong> Fit inside preserves the entire image with empty space where needed; Fill dimensions crops the edges to fill the target; Stretch changes the proportions to match the exact dimensions.</p></section>
+</article></main>
+<footer class="site-footer"><div class="container"><p>© <span data-current-year></span> Creator Image Toolkit. Free browser-based image tools.</p><nav aria-label="Footer"><a href="privacy-policy.html">Privacy</a><a href="terms-of-use.html">Terms</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav></div></footer>
+</body></html>
