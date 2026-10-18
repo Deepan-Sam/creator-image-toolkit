@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Free Image Metadata Cleaner | CreatorImageKit</title>
+  <meta name="description" content="Re-encode JPG, PNG, and WebP images in your browser to remove many embedded metadata fields. Preview and download a fresh copy locally.">
+  <link rel="canonical" href="https://creatorimagekit.com/image-metadata-cleaner.html">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Creator Image Toolkit">
+  <meta property="og:title" content="Free Image Metadata Cleaner | Creator Image Toolkit">
+  <meta property="og:description" content="Re-encode supported images in your browser to remove many embedded metadata fields.">
+  <meta property="og:url" content="https://creatorimagekit.com/image-metadata-cleaner.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free Image Metadata Cleaner | Creator Image Toolkit">
+  <meta name="twitter:description" content="Create a fresh image copy locally with browser-based re-encoding.">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1321029480431173" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="image-metadata-cleaner.css">
+  <script src="site.js" defer></script>
+  <script src="image-metadata-cleaner.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html#top" aria-label="Creator Image Toolkit home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M3.5 18.5 9 11l3.5 4 3-3.5 5 7H3.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="16.8" cy="7.2" r="2" fill="currentColor"/></svg></span><span class="brand-name">Creator <span>Image Toolkit</span></span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="nav-toggle-label">Menu</span></button>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation"><ul><li><a href="index.html#tools">Tools</a></li><li><a href="index.html#how-it-works">How it works</a></li><li><a href="index.html#guides">Guides</a></li><li><a href="index.html#faq">FAQ</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
+    </div>
+  </header>
+  <main id="main" class="seo-page">
+    <article class="container metadata-page">
+      <nav class="seo-breadcrumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> <span aria-hidden="true">/</span> Image Metadata Cleaner</nav>
+      <p class="eyebrow">Image tool</p>
+      <h1>Image Metadata Cleaner</h1>
+      <p class="seo-lead">Create a fresh copy of a JPG, PNG, or WebP by decoding and re-encoding its pixels in your browser. This can remove many embedded metadata fields, but it is not a guarantee of complete metadata sanitization.</p>
+      <section class="card metadata-card" aria-labelledby="metadata-tool-title">
+        <h2 id="metadata-tool-title" class="visually-hidden">Image metadata cleaner controls</h2>
+        <div id="metadata-dropzone" class="tool-upload-zone metadata-dropzone" aria-describedby="metadata-upload-help metadata-status">
+          <span class="tool-upload-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 14v5h14v-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <strong>Drop an image here</strong>
+          <span class="upload-or">or <button id="metadata-browse" class="browse-button" type="button">browse files</button></span>
+          <small id="metadata-upload-help">JPG, PNG, or WebP · Maximum 20 MB · Processed on your device</small>
+          <input id="metadata-file" class="visually-hidden file-picker" type="file" tabindex="-1" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" aria-label="Choose an image to clean">
+        </div>
+        <div class="metadata-selected" id="metadata-selected" hidden>
+          <div><strong id="metadata-file-name">Selected image</strong><p id="metadata-source-details" class="image-details">Original image details</p></div>
+          <button id="metadata-reset" class="btn-reset" type="button">Start over</button>
+        </div>
+        <p id="metadata-status" class="tool-status" role="status" aria-live="polite">Choose an image to get started.</p>
+        <div class="metadata-settings">
+          <div class="field-group"><label for="metadata-format">Output format</label><select id="metadata-format" disabled><option value="image/png">PNG</option><option value="image/jpeg">JPEG</option><option value="image/webp">WebP</option></select><small>Changing format may change file size and transparency.</small></div>
+          <div class="field-group"><label for="metadata-jpeg-bg">Background for JPEG</label><select id="metadata-jpeg-bg" disabled><option value="#ffffff">White</option><option value="#000000">Black</option></select><small>JPEG does not support transparency.</small></div>
+        </div>
+        <div class="metadata-preview-grid">
+          <section class="image-panel" aria-labelledby="metadata-original-heading"><h3 id="metadata-original-heading" class="card-subtitle">Original image</h3><div class="metadata-preview"><img id="metadata-original-preview" alt="Original image preview" hidden><span id="metadata-original-placeholder">Your preview will appear here.</span></div><p id="metadata-original-info" class="image-details">Dimensions and file size will appear here.</p></section>
+          <section class="image-panel" aria-labelledby="metadata-clean-heading"><h3 id="metadata-clean-heading" class="card-subtitle">Re-encoded copy</h3><div class="metadata-preview"><img id="metadata-output-preview" alt="Re-encoded image preview" hidden><span id="metadata-output-placeholder">Your output preview will appear here.</span></div><p id="metadata-output-info" class="image-details">The output will appear here after processing.</p></section>
+        </div>
+        <div class="metadata-actions"><button id="metadata-process" class="btn btn-primary" type="button" disabled>Create cleaned copy</button><button id="metadata-download" class="btn btn-secondary" type="button" disabled>Download image</button></div>
+        <p class="metadata-privacy"><strong>Important:</strong> The image is processed in this browser; it is not uploaded for image processing. Re-encoding usually removes many embedded EXIF, GPS, and text metadata fields, but browser encoders can behave differently. This tool does not inspect or certify every metadata block, and should not be treated as a forensic privacy guarantee. Keep the original if you need its metadata.</p>
+      </section>
+      <section class="metadata-help" aria-labelledby="metadata-how-title"><h2 id="metadata-how-title">How it works</h2><ol><li>Choose a supported image from your device.</li><li>Select PNG, JPEG, or WebP output.</li><li>Create and review the re-encoded copy.</li><li>Download it only after checking the preview and file details.</li></ol><h2>What does re-encoding change?</h2><p>The browser decodes the image pixels and creates a new file from those pixels. This can remove many metadata fields carried by the original file. It may also change compression, quality, file size, color characteristics, and transparency depending on the selected format and browser.</p><p>For sensitive images, verify the downloaded file with a trusted metadata inspection tool before sharing. This utility does not guarantee that every possible metadata field is removed.</p></section>
+      <section class="metadata-related" aria-labelledby="metadata-related-title"><h2 id="metadata-related-title">More image tools</h2><p><a href="image-cropper.html">Image Cropper</a> · <a href="image-color-picker.html">Image Color Picker</a> · <a href="watermark-maker.html">Watermark Maker</a> · <a href="social-media-image-resizer.html">Social Media Image Resizer</a></p></section>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="container"><div class="footer-main"><div class="footer-about"><a class="brand footer-brand" href="index.html#top"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M3.5 18.5 9 11l3.5 4 3-3.5 5 7H3.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="16.8" cy="7.2" r="2" fill="currentColor"/></svg></span><span class="brand-name">Creator <span>Image Toolkit</span></span></a><p>Free browser-based image tools for creators.</p></div><div class="footer-column"><h2>Explore</h2><ul class="footer-links"><li><a href="index.html#tools">Image tools</a></li><li><a href="index.html#guides">Tool guides</a></li></ul></div><div class="footer-column"><h2>Information</h2><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy-policy.html">Privacy policy</a></li><li><a href="terms-of-use.html">Terms of use</a></li></ul></div></div><div class="footer-bottom"><p class="copyright">&copy; <span id="year">2026</span> Creator Image Toolkit</p><a href="#main" class="back-to-top">Back to top <span aria-hidden="true">↑</span></a></div></div></footer>
+</body>
+</html>
