@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Image Cropper | Creator Image Toolkit</title>
+  <meta name="description" content="Crop JPG, PNG, and WebP images in your browser with freeform, square, 4:5, 16:9, and 3:2 selections. Preview and download a cropped copy.">
+  <link rel="canonical" href="https://creatorimagekit.com/image-cropper.html">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%234f46e5'/%3E%3Cpath d='M18 72l22-28 14 17 12-14 17 25z' fill='white'/%3E%3Ccircle cx='69' cy='32' r='8' fill='white'/%3E%3C/svg%3E">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Creator Image Toolkit">
+  <meta property="og:title" content="Image Cropper | Creator Image Toolkit">
+  <meta property="og:description" content="Crop JPG, PNG, or WebP images in your browser with draggable selection controls and common aspect-ratio presets.">
+  <meta property="og:url" content="https://creatorimagekit.com/image-cropper.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Image Cropper | Creator Image Toolkit">
+  <meta name="twitter:description" content="Select a freeform or fixed-ratio crop, preview the result, and download a copy.">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1321029480431173"
+     crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="cropper.css">
+  <script src="site.js" defer></script>
+  <script src="cropper.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html#top" aria-label="Creator Image Toolkit home">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M3.5 18.5 9 11l3.5 4 3-3.5 5 7H3.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="16.8" cy="7.2" r="2" fill="currentColor"/></svg></span>
+        <span class="brand-name">Creator <span>Image Toolkit</span></span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="nav-toggle-label">Menu</span></button>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation"><ul>
+        <li><a href="index.html#tools">Tools</a></li><li><a href="index.html#how-it-works">How it works</a></li><li><a href="index.html#guides">Guides</a></li><li><a href="index.html#faq">FAQ</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li>
+      </ul></nav>
+    </div>
+  </header>
+  <main id="main" class="seo-page">
+    <article class="container cropper-page">
+      <nav class="seo-breadcrumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> <span aria-hidden="true">/</span> Image Cropper</nav>
+      <p class="eyebrow">Image tool</p>
+      <h1>Crop an image to the frame you need</h1>
+      <p class="seo-lead">Choose a JPG, PNG, or WebP image, position the crop, and download a verified copy. Image work stays in this browser; the selected image is not sent to an image-processing server.</p>
+
+      <section class="card cropper-card" aria-labelledby="cropper-tool-title">
+        <h2 id="cropper-tool-title" class="visually-hidden">Image cropper controls</h2>
+        <div id="cropper-dropzone" class="tool-upload-zone cropper-dropzone" aria-describedby="cropper-upload-help cropper-status">
+          <span class="tool-upload-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 14v5h14v-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <strong>Drop one image here</strong>
+          <span class="upload-or">or <button id="cropper-browse" class="browse-button" type="button">browse files</button></span>
+          <small id="cropper-upload-help">JPG, PNG, or WebP · Maximum 20 MB · Up to 40 megapixels and 16,384 px per side</small>
+          <input id="cropper-file" class="visually-hidden" type="file" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" aria-label="Choose an image to crop">
+        </div>
+        <div id="cropper-file-panel" class="cropper-file-panel" hidden>
+          <p id="cropper-file-details" class="image-details">No image selected</p>
+          <div class="cropper-file-actions">
+            <button id="cropper-replace" class="btn btn-secondary" type="button">Replace image</button>
+            <button id="cropper-reset" class="btn-reset" type="button">Start over</button>
+          </div>
+        </div>
+        <p id="cropper-status" class="tool-status" role="status" aria-live="polite">Choose or drop one image to begin.</p>
+
+        <div id="cropper-workspace" class="cropper-workspace" hidden>
+          <section aria-labelledby="cropper-source-heading">
+            <h3 id="cropper-source-heading" class="card-subtitle">Select crop area</h3>
+            <div id="cropper-stage" class="cropper-stage">
+              <div id="cropper-frame" class="cropper-frame">
+                <img id="cropper-source-preview" alt="Selected source image with adjustable crop selection" draggable="false">
+                <div id="cropper-selection" class="cropper-selection" role="group" aria-label="Crop selection. Use arrow keys on a handle to adjust it.">
+                  <button class="cropper-handle handle-nw" type="button" data-handle="nw" aria-label="Resize crop from top left"></button>
+                  <button class="cropper-handle handle-n" type="button" data-handle="n" aria-label="Resize crop from top edge"></button>
+                  <button class="cropper-handle handle-ne" type="button" data-handle="ne" aria-label="Resize crop from top right"></button>
+                  <button class="cropper-handle handle-e" type="button" data-handle="e" aria-label="Resize crop from right edge"></button>
+                  <button class="cropper-handle handle-se" type="button" data-handle="se" aria-label="Resize crop from bottom right"></button>
+                  <button class="cropper-handle handle-s" type="button" data-handle="s" aria-label="Resize crop from bottom edge"></button>
+                  <button class="cropper-handle handle-sw" type="button" data-handle="sw" aria-label="Resize crop from bottom left"></button>
+                  <button class="cropper-handle handle-w" type="button" data-handle="w" aria-label="Resize crop from left edge"></button>
+                </div>
+              </div>
+            </div>
+            <p id="cropper-crop-details" class="image-details" aria-live="polite">Crop dimensions will appear here.</p>
+            <p class="cropper-keyboard-help">Drag inside the selection to move it. Drag a handle to resize. Focus a handle and use arrow keys for precise adjustments.</p>
+          </section>
+
+          <section class="cropper-controls" aria-labelledby="cropper-settings-heading">
+            <h3 id="cropper-settings-heading" class="card-subtitle">Crop settings</h3>
+            <div class="field-group">
+              <label for="cropper-ratio">Aspect ratio</label>
+              <select id="cropper-ratio">
+                <option value="free">Freeform</option>
+                <option value="1">Square (1:1)</option>
+                <option value="0.8">Portrait (4:5)</option>
+                <option value="1.7777777778">Widescreen (16:9)</option>
+                <option value="1.5">Landscape (3:2)</option>
+                <option value="custom">Custom ratio</option>
+              </select>
+            </div>
+            <div id="cropper-custom-ratio" class="cropper-custom-ratio" hidden>
+              <div class="field-group"><label for="cropper-ratio-width">Ratio width</label><input id="cropper-ratio-width" type="number" min="1" max="10000" step="1" value="1" inputmode="numeric"></div>
+              <span class="ratio-separator" aria-hidden="true">:</span>
+              <div class="field-group"><label for="cropper-ratio-height">Ratio height</label><input id="cropper-ratio-height" type="number" min="1" max="10000" step="1" value="1" inputmode="numeric"></div>
+            </div>
+            <div class="cropper-dimensions">
+              <div class="field-group"><label for="cropper-x">Left (px)</label><input id="cropper-x" type="number" min="0" step="1" value="0"></div>
+              <div class="field-group"><label for="cropper-y">Top (px)</label><input id="cropper-y" type="number" min="0" step="1" value="0"></div>
+              <div class="field-group"><label for="cropper-width">Width (px)</label><input id="cropper-width" type="number" min="1" step="1" value="1"></div>
+              <div class="field-group"><label for="cropper-height">Height (px)</label><input id="cropper-height" type="number" min="1" step="1" value="1"></div>
+            </div>
+            <div class="field-group cropper-format-field">
+              <label for="cropper-format">Output format</label>
+              <select id="cropper-format"><option value="image/jpeg">JPEG</option><option value="image/png">PNG</option><option value="image/webp">WebP</option></select>
+              <small>Transparent areas become white in JPEG. Other format options depend on browser support.</small>
+            </div>
+            <p id="cropper-output-details" class="image-details" aria-live="polite">Output dimensions and size will appear after processing.</p>
+            <div class="cropper-result-preview">
+              <h4 class="card-subtitle">Cropped preview</h4>
+              <div class="image-preview"><img id="cropper-result-preview" alt="Cropped image output preview" hidden><span id="cropper-result-placeholder">Your cropped preview will appear here.</span></div>
+            </div>
+            <div class="cropper-actions">
+              <button id="cropper-download" class="btn btn-primary" type="button" disabled>Download cropped image</button>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="cropper-help" aria-labelledby="cropper-how-title">
+        <h2 id="cropper-how-title">How to crop an image</h2>
+        <ol class="seo-steps">
+          <li><div><strong>Choose an image</strong><span>Select or drop a JPG, PNG, or WebP image. It is checked and decoded in your browser.</span></div></li>
+          <li><div><strong>Set the crop</strong><span>Choose freeform or a ratio preset, then move or resize the selection. You can also edit its pixel coordinates.</span></div></li>
+          <li><div><strong>Review and download</strong><span>Choose a supported output format, inspect the verified preview, and download a new file. Your original remains unchanged.</span></div></li>
+        </ol>
+      </section>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-about"><a class="brand footer-brand" href="index.html#top"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M3.5 18.5 9 11l3.5 4 3-3.5 5 7H3.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="16.8" cy="7.2" r="2" fill="currentColor"/></svg></span><span class="brand-name">Creator <span>Image Toolkit</span></span></a><p>Free browser-based image tools for creators.</p></div>
+        <div class="footer-column"><h2>Explore</h2><ul class="footer-links"><li><a href="index.html#tools">Image tools</a></li><li><a href="index.html#how-it-works">How it works</a></li><li><a href="index.html#guides">Tool guides</a></li><li><a href="index.html#faq">FAQ</a></li></ul></div>
+        <div class="footer-column"><h2>Information</h2><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy-policy.html">Privacy policy</a></li><li><a href="terms-of-use.html">Terms of use</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p class="copyright">&copy; <span id="year">2026</span> Creator Image Toolkit</p><a href="index.html#top" class="back-to-top">Back to homepage <span aria-hidden="true">↑</span></a></div>
+    </div>
+  </footer>
+</body>
+</html>

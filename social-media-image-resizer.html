@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Free Social Media Image Resizer | CreatorImageKit</title>
+  <meta name="description" content="Resize images for common social media formats with editable presets and custom dimensions. Preview and download images directly in your browser.">
+  <link rel="canonical" href="https://creatorimagekit.com/social-media-image-resizer.html">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%234f46e5'/%3E%3Cpath d='M18 72l22-28 14 17 12-14 17 25z' fill='white'/%3E%3Ccircle cx='69' cy='32' r='8' fill='white'/%3E%3C/svg%3E">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Creator Image Toolkit">
+  <meta property="og:title" content="Free Social Media Image Resizer | Creator Image Toolkit">
+  <meta property="og:description" content="Choose an editable image-size starting point, adjust the crop, and download a resized image in your browser.">
+  <meta property="og:url" content="https://creatorimagekit.com/social-media-image-resizer.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free Social Media Image Resizer | Creator Image Toolkit">
+  <meta name="twitter:description" content="Resize an image with editable social media presets and a live preview.">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1321029480431173"
+     crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="social-media-image-resizer.css">
+  <script src="site.js" defer></script>
+  <script src="social-media-image-resizer.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html#top" aria-label="Creator Image Toolkit home">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M3.5 18.5 9 11l3.5 4 3-3.5 5 7H3.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="16.8" cy="7.2" r="2" fill="currentColor"/></svg></span>
+        <span class="brand-name">Creator <span>Image Toolkit</span></span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="nav-toggle-label">Menu</span></button>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation"><ul>
+        <li><a href="index.html#tools">Tools</a></li><li><a href="index.html#how-it-works">How it works</a></li><li><a href="index.html#guides">Guides</a></li><li><a href="index.html#faq">FAQ</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li>
+      </ul></nav>
+    </div>
+  </header>
+  <main id="main" class="seo-page">
+    <article class="container social-resizer-page">
+      <nav class="seo-breadcrumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> <span aria-hidden="true">/</span> Social Media Image Resizer</nav>
+      <p class="eyebrow">Image tool</p>
+      <h1>Social Media Image Resizer</h1>
+      <p class="seo-lead">Choose an editable size starting point for Instagram, Facebook, YouTube, TikTok, LinkedIn, or X. Preview the crop and download a resized copy; your image stays in this browser.</p>
+
+      <section class="card social-resizer-card" aria-labelledby="social-tool-title">
+        <h2 id="social-tool-title" class="visually-hidden">Social media image resizer controls</h2>
+        <div id="social-dropzone" class="tool-upload-zone social-dropzone" aria-describedby="social-upload-help social-status">
+          <span class="tool-upload-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 14v5h14v-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <strong>Drop one image here</strong>
+          <span class="upload-or">or <button id="social-browse" class="browse-button" type="button">Browse image</button></span>
+          <small id="social-upload-help">JPG, PNG, or WebP · Maximum 20 MB · Up to 40 megapixels and 16,384 px per side</small>
+          <input id="social-file" class="visually-hidden" type="file" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" aria-label="Choose an image to resize for social media">
+        </div>
+
+        <div id="social-file-panel" class="selected-file-panel social-file-panel" hidden>
+          <span class="selected-file-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+          <div class="selected-file-copy"><strong>Selected image</strong><p id="social-file-details" class="image-details">No image selected</p></div>
+          <div class="social-file-actions">
+            <button id="social-replace" class="btn btn-secondary" type="button">Replace image</button>
+            <button id="social-reset" class="btn-reset" type="button">Start over</button>
+          </div>
+        </div>
+
+        <p id="social-status" class="tool-status" role="status" aria-live="polite" aria-atomic="true">Choose or drop one image to begin.</p>
+        <p id="social-preset-status" class="social-preset-status" role="status" aria-live="polite">Presets are practical starting points; check the platform’s latest specifications before publishing.</p>
+
+        <div class="social-settings" aria-label="Output settings">
+          <div class="field-group">
+            <label for="social-platform">Platform</label>
+            <select id="social-platform">
+              <option value="instagram">Instagram</option>
+              <option value="facebook">Facebook</option>
+              <option value="youtube">YouTube</option>
+              <option value="tiktok">TikTok</option>
+              <option value="linkedin">LinkedIn</option>
+              <option value="x">X</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="social-preset">Image use</label>
+            <select id="social-preset"></select>
+          </div>
+          <div class="field-group">
+            <label for="social-width">Width (px)</label>
+            <input id="social-width" type="number" min="1" max="16384" step="1" inputmode="numeric" value="1080" aria-describedby="social-dimension-help social-status">
+          </div>
+          <div class="field-group">
+            <label for="social-height">Height (px)</label>
+            <input id="social-height" type="number" min="1" max="16384" step="1" inputmode="numeric" value="1080" aria-describedby="social-dimension-help social-status">
+          </div>
+          <div class="field-group social-lock-field">
+            <span class="social-control-label">Dimensions</span>
+            <button id="social-ratio-lock" class="lock-button" type="button" aria-pressed="true" aria-label="Unlock aspect ratio">Ratio locked</button>
+            <small id="social-dimension-help">Whole pixels only. Output is limited to 16,384 px per side and 40 megapixels.</small>
+          </div>
+          <div class="field-group">
+            <label for="social-fit-mode">Image fit</label>
+            <select id="social-fit-mode">
+              <option value="fit">Fit — show whole image</option>
+              <option value="fill">Fill and crop — fill the frame</option>
+              <option value="stretch">Stretch — may distort the image</option>
+            </select>
+            <small id="social-fit-help">Fit centers the full image and adds background padding.</small>
+          </div>
+          <div id="social-position-controls" class="social-position-controls" hidden>
+            <div class="field-group">
+              <label for="social-position-x">Horizontal crop position: <output id="social-position-x-value" for="social-position-x">50%</output></label>
+              <input id="social-position-x" type="range" min="0" max="100" step="1" value="50" aria-describedby="social-position-help">
+            </div>
+            <div class="field-group">
+              <label for="social-position-y">Vertical crop position: <output id="social-position-y-value" for="social-position-y">50%</output></label>
+              <input id="social-position-y" type="range" min="0" max="100" step="1" value="50" aria-describedby="social-position-help">
+            </div>
+            <small id="social-position-help">Use the sliders to place the crop: 0% is left or top, 50% is centered, and 100% is right or bottom.</small>
+          </div>
+          <div class="field-group social-background-field">
+            <label for="social-background">Fit background</label>
+            <select id="social-background">
+              <option value="white">White</option>
+              <option value="black">Black</option>
+              <option value="transparent">Transparent (PNG or WebP)</option>
+            </select>
+            <small id="social-background-help">JPEG does not preserve transparency; transparent padding is white in JPEG output.</small>
+          </div>
+          <div class="field-group">
+            <label for="social-format">Output format</label>
+            <select id="social-format"><option value="image/jpeg">JPEG</option><option value="image/png">PNG</option><option value="image/webp">WebP</option></select>
+            <small>JPEG and WebP use 92% quality. Unsupported formats are disabled by the browser.</small>
+          </div>
+        </div>
+
+        <p id="social-preset-match" class="social-preset-match" data-state="match">Dimensions match the selected preset.</p>
+        <div class="social-preview-section">
+          <div class="social-preview-heading">
+            <div><h3 class="card-subtitle">Preview</h3><p id="social-preview-details" class="image-details">Choose an image to preview the selected size.</p></div>
+            <span id="social-validation-badge" class="social-validation-badge" hidden></span>
+          </div>
+          <div class="social-preview-stage">
+            <canvas id="social-preview" role="img" aria-label="Preview of resized image" width="320" height="180"></canvas>
+            <span id="social-preview-placeholder">Your target-size preview will appear here.</span>
+          </div>
+        </div>
+        <div class="social-actions">
+          <button id="social-create" class="btn btn-primary" type="button" disabled>Create resized image</button>
+          <button id="social-download" class="btn btn-secondary" type="button" disabled>Download resized image</button>
+        </div>
+        <p id="social-output-details" class="image-details social-output-details">Verified output dimensions and file size will appear here.</p>
+        <div class="social-privacy">Images are decoded and processed in this browser; they are not sent to an image-processing server.</div>
+      </section>
+
+      <section class="social-help" aria-labelledby="social-how-title">
+        <h2 id="social-how-title">How to resize an image for social media</h2>
+        <ol class="seo-steps">
+          <li><div><strong>Choose an image and a starting size</strong><span>Upload a JPG, PNG, or WebP, then select a platform and image use. Preset dimensions are editable.</span></div></li>
+          <li><div><strong>Choose the fit</strong><span>Fit keeps the full image, Fill and crop trims the edges and supports adjustable positioning, and Stretch changes the proportions.</span></div></li>
+          <li><div><strong>Review and download</strong><span>Check the preview and dimensions, choose an output format, create a verified image, and download it.</span></div></li>
+        </ol>
+        <p class="social-platform-note">Platform image recommendations can change and vary by placement, device, and account. These sizes are practical editable starting points, not a guarantee of platform acceptance. Review current requirements before publishing.</p>
+        <details class="social-source-note">
+          <summary>Preset references and verification</summary>
+          <p>Preset reference pages were checked on 18 October 2026. Public help pages do not expose a complete, stable specification for every organic image placement; where a current dimension could not be confirmed directly from an official page, the preset is presented as a conventional, editable working size rather than an official requirement. Confirm the desired placement and dimensions with the platform before use.</p>
+          <ul>
+            <li><a href="https://help.instagram.com/1631821640426723" target="_blank" rel="noopener noreferrer">Instagram Help Center</a></li>
+            <li><a href="https://www.facebook.com/business/help/469767027114079" target="_blank" rel="noopener noreferrer">Meta Business Help: recommended minimum image pixel requirements</a></li>
+            <li><a href="https://support.google.com/youtube/answer/72431?hl=en" target="_blank" rel="noopener noreferrer">YouTube Help: add video thumbnails</a></li>
+            <li><a href="https://support.tiktok.com/en/using-tiktok/creating-videos/making-a-post" target="_blank" rel="noopener noreferrer">TikTok Support: creating a post</a></li>
+            <li><a href="https://www.linkedin.com/help/linkedin/" target="_blank" rel="noopener noreferrer">LinkedIn Help Center</a></li>
+            <li><a href="https://help.x.com/en/using-x/posting-gifs-and-pictures" target="_blank" rel="noopener noreferrer">X Help: posting photos and GIFs</a></li>
+          </ul>
+        </details>
+      </section>
+      <section class="seo-faq social-faq" aria-labelledby="social-faq-title">
+        <h2 id="social-faq-title">Social media image resizing questions</h2>
+        <details class="faq-item"><summary>Are these official or guaranteed platform dimensions?</summary><p>No. Presets are practical, editable starting points. Requirements can vary by placement and change over time, so check the platform’s current guidance before publishing.</p></details>
+        <details class="faq-item"><summary>Is my selected image uploaded?</summary><p>The resizer reads and renders the selected image in your browser and does not send it to an image-processing server. Hosting, advertising, and other website services may still make their own network requests; see the <a href="privacy-policy.html">Privacy Policy</a>.</p></details>
+        <details class="faq-item"><summary>Which image formats can I download?</summary><p>JPEG, PNG, and WebP are offered when supported by your browser. JPEG does not preserve transparency; PNG and WebP can preserve transparent areas.</p></details>
+      </section>
+      <section class="social-related" aria-labelledby="social-related-title">
+        <h2 id="social-related-title">Related image tools</h2>
+        <ul class="seo-related">
+          <li><a href="image-cropper.html">Crop an image to a chosen frame</a></li>
+          <li><a href="index.html#image-resizer">Resize an image to custom dimensions</a></li>
+          <li><a href="index.html#image-compressor">Compress an image and compare output size</a></li>
+        </ul>
+      </section>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="container">
+    <div class="footer-main">
+      <div class="footer-about"><a class="brand footer-brand" href="index.html#top"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M3.5 18.5 9 11l3.5 4 3-3.5 5 7H3.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="16.8" cy="7.2" r="2" fill="currentColor"/></svg></span><span class="brand-name">Creator <span>Image Toolkit</span></span></a><p>Free browser-based image tools for creators.</p></div>
+      <div class="footer-column"><h2>Explore</h2><ul class="footer-links"><li><a href="index.html#tools">Image tools</a></li><li><a href="index.html#how-it-works">How it works</a></li><li><a href="index.html#guides">Tool guides</a></li><li><a href="index.html#faq">FAQ</a></li></ul></div>
+      <div class="footer-column"><h2>Information</h2><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy-policy.html">Privacy policy</a></li><li><a href="terms-of-use.html">Terms of use</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p class="copyright">&copy; <span id="year">2026</span> Creator Image Toolkit</p><a href="index.html#top" class="back-to-top">Back to homepage <span aria-hidden="true">↑</span></a></div>
+  </div></footer>
+</body>
+</html>

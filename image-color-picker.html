@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Free Online Image Color Picker | Creator Image Toolkit</title>
+  <meta name="description" content="Pick colors from an image online. Sample pixels and copy HEX, RGB, HSL, and RGBA color values directly in your browser.">
+  <link rel="canonical" href="https://creatorimagekit.com/image-color-picker.html">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%234f46e5'/%3E%3Cpath d='M18 72l22-28 14 17 12-14 17 25z' fill='white'/%3E%3Ccircle cx='69' cy='32' r='8' fill='white'/%3E%3C/svg%3E">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Creator Image Toolkit">
+  <meta property="og:title" content="Free Online Image Color Picker | Creator Image Toolkit">
+  <meta property="og:description" content="Sample pixels from an image and copy HEX, RGB, HSL, and RGBA values in your browser.">
+  <meta property="og:url" content="https://creatorimagekit.com/image-color-picker.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free Online Image Color Picker | Creator Image Toolkit">
+  <meta name="twitter:description" content="Pick a pixel in an image to view and copy its color values.">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1321029480431173"
+     crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="image-color-picker.css">
+  <script src="site.js" defer></script>
+  <script src="image-color-picker.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html#top" aria-label="Creator Image Toolkit home">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M3.5 18.5 9 11l3.5 4 3-3.5 5 7H3.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="16.8" cy="7.2" r="2" fill="currentColor"/></svg></span>
+        <span class="brand-name">Creator <span>Image Toolkit</span></span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="nav-toggle-label">Menu</span></button>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation"><ul>
+        <li><a href="index.html#tools">Tools</a></li><li><a href="index.html#how-it-works">How it works</a></li><li><a href="index.html#guides">Guides</a></li><li><a href="index.html#faq">FAQ</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li>
+      </ul></nav>
+    </div>
+  </header>
+  <main id="main" class="seo-page">
+    <article class="container color-picker-page">
+      <nav class="seo-breadcrumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> <span aria-hidden="true">/</span> Image Color Picker</nav>
+      <p class="eyebrow">Image tool</p>
+      <h1>Image Color Picker</h1>
+      <p class="seo-lead">Choose a pixel in your image to inspect its color. View and copy HEX, RGB, HSL, and RGBA values; image sampling happens locally in this browser.</p>
+
+      <section class="card color-picker-card" aria-labelledby="picker-tool-title">
+        <h2 id="picker-tool-title" class="visually-hidden">Image color picker controls</h2>
+        <div id="picker-dropzone" class="tool-upload-zone picker-dropzone" aria-describedby="picker-upload-help picker-status">
+          <span class="tool-upload-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 14v5h14v-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <strong>Drop one image here</strong>
+          <span class="upload-or">or <button id="picker-browse" class="browse-button" type="button">Browse image</button></span>
+          <small id="picker-upload-help">JPG, PNG, WebP, or GIF · Maximum 20 MB · Up to 40 megapixels and 16,384 px per side</small>
+          <input id="picker-file" class="visually-hidden" type="file" accept="image/jpeg,image/png,image/webp,image/gif,.jpg,.jpeg,.png,.webp,.gif" aria-label="Choose an image to pick colors from">
+        </div>
+
+        <div id="picker-file-panel" class="selected-file-panel picker-file-panel" hidden>
+          <span class="selected-file-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+          <div class="selected-file-copy"><strong>Selected image</strong><p id="picker-file-details" class="image-details">No image selected</p></div>
+          <div class="picker-file-actions">
+            <button id="picker-replace" class="btn btn-secondary" type="button">Replace image</button>
+            <button id="picker-reset" class="btn-reset" type="button">Start over</button>
+          </div>
+        </div>
+        <p id="picker-status" class="tool-status" role="status" aria-live="polite" aria-atomic="true">Choose or drop one image to begin.</p>
+
+        <div id="picker-workspace" class="picker-workspace" hidden>
+          <section class="picker-image-panel" aria-labelledby="picker-preview-title">
+            <h3 id="picker-preview-title" class="card-subtitle">Choose a pixel</h3>
+            <p id="picker-instructions" class="picker-instructions">Click or tap the image to sample a pixel. To use a keyboard, focus the image, move the sampling point with the arrow keys, then press Enter or Space to select.</p>
+            <div class="picker-stage">
+              <div class="picker-image-frame">
+                <canvas id="picker-preview" tabindex="0" role="img" aria-describedby="picker-instructions picker-coordinates"></canvas>
+                <span id="picker-marker" class="picker-marker" aria-hidden="true" hidden></span>
+              </div>
+            </div>
+            <p id="picker-coordinates" class="image-details picker-coordinates" aria-live="polite">No pixel selected.</p>
+          </section>
+
+          <section class="picker-result-panel" aria-labelledby="picker-result-title">
+            <h3 id="picker-result-title" class="card-subtitle">Selected color</h3>
+            <div id="picker-color-empty" class="picker-color-empty">
+              <span class="picker-empty-swatch" aria-hidden="true"></span>
+              <p>Your sampled color and values will appear here.</p>
+            </div>
+            <div id="picker-color-result" class="picker-color-result" hidden>
+              <div class="picker-color-summary">
+                <span class="picker-color-swatch" aria-hidden="true"><span id="picker-swatch-color"></span></span>
+                <div><strong id="picker-hex-large">#000000</strong><span id="picker-alpha-note">Opaque color</span></div>
+              </div>
+              <dl class="picker-values">
+                <div class="picker-value-row"><dt>HEX</dt><dd><code id="picker-hex-value"></code><button class="btn-copy" type="button" data-copy="hex" aria-label="Copy HEX color">Copy</button></dd></div>
+                <div class="picker-value-row"><dt>RGB</dt><dd><code id="picker-rgb-value"></code><button class="btn-copy" type="button" data-copy="rgb" aria-label="Copy RGB color">Copy</button></dd></div>
+                <div class="picker-value-row"><dt>HSL</dt><dd><code id="picker-hsl-value"></code><button class="btn-copy" type="button" data-copy="hsl" aria-label="Copy HSL color">Copy</button></dd></div>
+                <div class="picker-value-row"><dt>RGBA</dt><dd><code id="picker-rgba-value"></code><button class="btn-copy" type="button" data-copy="rgba" aria-label="Copy RGBA color">Copy</button></dd></div>
+              </dl>
+              <p class="picker-alpha-help">HEX, RGB, and HSL show the sampled RGB components without transparency. Use RGBA to retain the alpha value.</p>
+            </div>
+            <section class="picker-history" aria-labelledby="picker-history-title">
+              <div class="picker-history-heading"><h4 id="picker-history-title">Recent colors</h4><button id="picker-clear-history" class="btn-reset" type="button" disabled>Clear history</button></div>
+              <p id="picker-history-empty" class="picker-history-empty">Colors selected in this visit will appear here.</p>
+              <div id="picker-history-list" class="picker-history-list" aria-label="Recent selected colors"></div>
+            </section>
+          </section>
+        </div>
+      </section>
+
+      <section class="picker-help" aria-labelledby="picker-how-title">
+        <h2 id="picker-how-title">How to pick a color from an image</h2>
+        <ol class="seo-steps">
+          <li><div><strong>Choose an image</strong><span>Select or drop a JPG, PNG, WebP, or GIF file. The image is decoded and sampled in your browser.</span></div></li>
+          <li><div><strong>Select a pixel</strong><span>Click or tap the image, or focus it and use the arrow keys. Press Enter or Space to sample the keyboard position.</span></div></li>
+          <li><div><strong>Copy a color value</strong><span>Review the HEX, RGB, HSL, or RGBA value and use its Copy button. For a transparent pixel, RGBA includes the alpha channel.</span></div></li>
+        </ol>
+        <p class="picker-format-note">GIF files are sampled as one browser-decoded still frame; animation is not sampled. Color values describe the decoded pixel, which can differ from an image’s embedded color profile.</p>
+        <p class="picker-privacy-note">Images and sampled pixel values stay in this page’s browser memory. They are not uploaded to an image-processing server or saved by this tool.</p>
+      </section>
+      <section class="picker-related" aria-labelledby="picker-related-title">
+        <h2 id="picker-related-title">Related image tools</h2>
+        <ul class="seo-related">
+          <li><a href="image-cropper.html">Crop an image to a chosen frame</a></li>
+          <li><a href="index.html#image-resizer">Resize an image or convert its format</a></li>
+          <li><a href="index.html#image-compressor">Compress an image and compare output size</a></li>
+        </ul>
+      </section>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="container">
+    <div class="footer-main">
+      <div class="footer-about"><a class="brand footer-brand" href="index.html#top"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M3.5 18.5 9 11l3.5 4 3-3.5 5 7H3.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="16.8" cy="7.2" r="2" fill="currentColor"/></svg></span><span class="brand-name">Creator <span>Image Toolkit</span></span></a><p>Free browser-based image tools for creators.</p></div>
+      <div class="footer-column"><h2>Explore</h2><ul class="footer-links"><li><a href="index.html#tools">Image tools</a></li><li><a href="index.html#how-it-works">How it works</a></li><li><a href="index.html#guides">Tool guides</a></li><li><a href="index.html#faq">FAQ</a></li></ul></div>
+      <div class="footer-column"><h2>Information</h2><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy-policy.html">Privacy policy</a></li><li><a href="terms-of-use.html">Terms of use</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p class="copyright">&copy; <span id="year">2026</span> Creator Image Toolkit</p><a href="index.html#top" class="back-to-top">Back to homepage <span aria-hidden="true">↑</span></a></div>
+  </div></footer>
+</body>
+</html>

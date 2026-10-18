@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Free Image Watermark Maker | CreatorImageKit</title>
+  <meta name="description" content="Add customizable text or logo watermarks to your images. Adjust position, size, rotation, and opacity, then download the result in your browser.">
+  <link rel="canonical" href="https://creatorimagekit.com/watermark-maker.html">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%234f46e5'/%3E%3Cpath d='M18 72l22-28 14 17 12-14 17 25z' fill='white'/%3E%3Ccircle cx='69' cy='32' r='8' fill='white'/%3E%3C/svg%3E">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Creator Image Toolkit">
+  <meta property="og:title" content="Free Image Watermark Maker | Creator Image Toolkit">
+  <meta property="og:description" content="Add and position a custom text or logo watermark, preview the result, and download the image in your browser.">
+  <meta property="og:url" content="https://creatorimagekit.com/watermark-maker.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free Image Watermark Maker | Creator Image Toolkit">
+  <meta name="twitter:description" content="Customize a text or logo watermark and download a watermarked image.">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1321029480431173"
+     crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="watermark-maker.css">
+  <script src="site.js" defer></script>
+  <script src="watermark-maker.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html#top" aria-label="Creator Image Toolkit home">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M3.5 18.5 9 11l3.5 4 3-3.5 5 7H3.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="16.8" cy="7.2" r="2" fill="currentColor"/></svg></span>
+        <span class="brand-name">Creator <span>Image Toolkit</span></span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="nav-toggle-label">Menu</span></button>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation"><ul>
+        <li><a href="index.html#tools">Tools</a></li><li><a href="index.html#how-it-works">How it works</a></li><li><a href="index.html#guides">Guides</a></li><li><a href="index.html#faq">FAQ</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li>
+      </ul></nav>
+    </div>
+  </header>
+  <main id="main" class="seo-page">
+    <article class="container watermark-page">
+      <nav class="seo-breadcrumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> <span aria-hidden="true">/</span> Image Watermark Maker</nav>
+      <p class="eyebrow">Image tool</p>
+      <h1>Image Watermark Maker</h1>
+      <p class="seo-lead">Overlay customizable text or a logo on an image. Adjust its size, position, rotation, and opacity, preview the result, and download a copy processed in this browser.</p>
+
+      <section class="card watermark-card" aria-labelledby="watermark-tool-title">
+        <h2 id="watermark-tool-title" class="visually-hidden">Image watermark controls</h2>
+        <div id="wm-source-dropzone" class="tool-upload-zone watermark-dropzone" aria-describedby="wm-source-help wm-status">
+          <span class="tool-upload-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 14v5h14v-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <strong>Drop your image here</strong>
+          <span class="upload-or">or <button id="wm-source-browse" class="browse-button" type="button">Browse image</button></span>
+          <small id="wm-source-help">JPG, PNG, or WebP · Maximum 20 MB · Up to 40 megapixels and 16,384 px per side</small>
+          <input id="wm-source-file" class="visually-hidden" type="file" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" aria-label="Choose an image to watermark">
+        </div>
+
+        <div id="wm-source-panel" class="selected-file-panel watermark-file-panel" hidden>
+          <span class="selected-file-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+          <div class="selected-file-copy"><strong>Source image</strong><p id="wm-source-details" class="image-details">No image selected</p></div>
+          <div class="watermark-file-actions">
+            <button id="wm-source-replace" class="btn btn-secondary" type="button">Replace image</button>
+            <button id="wm-reset" class="btn-reset" type="button">Start over</button>
+          </div>
+        </div>
+
+        <p id="wm-status" class="tool-status" role="status" aria-live="polite" aria-atomic="true">Choose an image to begin.</p>
+
+        <div class="watermark-workspace">
+          <section class="watermark-controls" aria-labelledby="wm-controls-title">
+            <h3 id="wm-controls-title" class="card-subtitle">Watermark settings</h3>
+            <div class="field-group">
+              <label for="wm-type">Watermark type</label>
+              <select id="wm-type" aria-describedby="wm-type-help">
+                <option value="text">Text watermark</option>
+                <option value="logo">Logo image</option>
+              </select>
+              <small id="wm-type-help">Add a short label or use an image logo.</small>
+            </div>
+
+            <fieldset id="wm-text-controls" class="watermark-control-group">
+              <legend>Text appearance</legend>
+              <div class="field-group watermark-control-wide">
+                <label for="wm-text">Watermark text</label>
+                <textarea id="wm-text" rows="2" maxlength="300" aria-describedby="wm-text-help">Your text</textarea>
+                <small id="wm-text-help">Enter your own wording. Text wraps and scales down as needed to fit the image.</small>
+              </div>
+              <div class="watermark-control-grid">
+                <div class="field-group">
+                  <label for="wm-font">Font family</label>
+                  <select id="wm-font">
+                    <option value="Arial, sans-serif">Arial</option>
+                    <option value="Georgia, serif">Georgia</option>
+                    <option value="system-ui, sans-serif">System sans-serif</option>
+                    <option value="monospace">Monospace</option>
+                  </select>
+                </div>
+                <div class="field-group" id="wm-text-size-field">
+                  <label for="wm-font-size">Font size (px)</label>
+                  <input id="wm-font-size" type="number" min="8" max="512" step="1" value="48" inputmode="numeric" aria-describedby="wm-font-size-help">
+                  <small id="wm-font-size-help">Measured at the original image size.</small>
+                </div>
+                <div class="field-group">
+                  <label for="wm-color">Text color</label>
+                  <input id="wm-color" class="watermark-color-input" type="color" value="#ffffff">
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset id="wm-logo-controls" class="watermark-control-group" hidden>
+              <legend>Logo image</legend>
+              <div id="wm-logo-dropzone" class="watermark-logo-dropzone" aria-describedby="wm-logo-help wm-status">
+                <strong>Choose a logo image</strong>
+                <button id="wm-logo-browse" class="btn btn-secondary" type="button">Browse logo</button>
+                <small id="wm-logo-help">JPG, PNG, or WebP · Maximum 20 MB. A logo does not need to have a transparent background.</small>
+                <input id="wm-logo-file" class="visually-hidden" type="file" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" aria-label="Choose a logo watermark image">
+              </div>
+              <div id="wm-logo-panel" class="watermark-logo-panel" hidden>
+                <p id="wm-logo-details" class="image-details">No logo selected</p>
+                <div class="watermark-file-actions">
+                  <button id="wm-logo-replace" class="btn btn-secondary" type="button">Replace logo</button>
+                  <button id="wm-logo-remove" class="btn-reset" type="button">Remove logo</button>
+                </div>
+              </div>
+              <p id="wm-logo-empty" class="watermark-logo-empty">Choose a logo before creating an output.</p>
+            </fieldset>
+
+            <fieldset class="watermark-control-group">
+              <legend>Size and appearance</legend>
+              <div class="watermark-control-grid">
+                <div class="field-group">
+                  <label for="wm-opacity">Opacity: <output id="wm-opacity-value" for="wm-opacity">65%</output></label>
+                  <input id="wm-opacity" type="range" min="0" max="100" step="1" value="65">
+                </div>
+                <div id="wm-logo-size-field" class="field-group" hidden>
+                  <label for="wm-logo-size">Logo size: <output id="wm-logo-size-value" for="wm-logo-size">16%</output></label>
+                  <input id="wm-logo-size" type="range" min="5" max="50" step="1" value="16" aria-describedby="wm-logo-size-help">
+                  <small id="wm-logo-size-help">Maximum size relative to the shorter image edge.</small>
+                </div>
+                <div id="wm-logo-padding-field" class="field-group" hidden>
+                  <label for="wm-logo-padding">Edge padding: <output id="wm-logo-padding-value" for="wm-logo-padding">4%</output></label>
+                  <input id="wm-logo-padding" type="range" min="0" max="15" step="1" value="4" aria-describedby="wm-logo-padding-help">
+                  <small id="wm-logo-padding-help">Minimum space between the logo and the image edge.</small>
+                </div>
+                <div class="field-group">
+                  <label for="wm-rotation">Rotation: <output id="wm-rotation-value" for="wm-rotation">0°</output></label>
+                  <input id="wm-rotation" type="range" min="-180" max="180" step="1" value="0">
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="watermark-control-group">
+              <legend>Position</legend>
+              <div class="field-group">
+                <label for="wm-position-preset">Placement</label>
+                <select id="wm-position-preset">
+                  <option value="top-left">Top left</option>
+                  <option value="top-center">Top center</option>
+                  <option value="top-right">Top right</option>
+                  <option value="center">Center</option>
+                  <option value="bottom-left">Bottom left</option>
+                  <option value="bottom-center">Bottom center</option>
+                  <option value="bottom-right" selected>Bottom right</option>
+                  <option value="custom">Custom position</option>
+                </select>
+              </div>
+              <div class="watermark-control-grid watermark-position-grid">
+                <div class="field-group">
+                  <label for="wm-position-x">Horizontal position: <output id="wm-position-x-value" for="wm-position-x">100%</output></label>
+                  <input id="wm-position-x" type="range" min="0" max="100" step="1" value="100">
+                  <small>0% left · 50% center · 100% right</small>
+                </div>
+                <div class="field-group">
+                  <label for="wm-position-y">Vertical position: <output id="wm-position-y-value" for="wm-position-y">100%</output></label>
+                  <input id="wm-position-y" type="range" min="0" max="100" step="1" value="100">
+                  <small>0% top · 50% center · 100% bottom</small>
+                </div>
+              </div>
+            </fieldset>
+
+            <div class="field-group">
+              <label for="wm-format">Output format</label>
+              <select id="wm-format"><option value="image/jpeg">JPEG</option><option value="image/png">PNG</option><option value="image/webp">WebP</option></select>
+              <small id="wm-format-help">JPEG does not preserve transparency; transparent areas become white.</small>
+            </div>
+          </section>
+
+          <section class="watermark-preview-panel" aria-labelledby="wm-preview-title">
+            <div class="watermark-preview-heading">
+              <div><h3 id="wm-preview-title" class="card-subtitle">Preview</h3><p id="wm-preview-details" class="image-details">Your watermarked preview will appear here.</p></div>
+            </div>
+            <div class="watermark-preview-stage">
+              <canvas id="wm-preview" role="img" aria-label="Preview of the watermarked image" hidden></canvas>
+              <span id="wm-preview-placeholder">Choose an image to preview the watermark.</span>
+            </div>
+            <div class="watermark-output-actions">
+              <button id="wm-create" class="btn btn-primary" type="button" disabled>Create watermarked image</button>
+              <button id="wm-download" class="btn btn-secondary" type="button" disabled>Download watermarked image</button>
+            </div>
+            <p id="wm-output-details" class="image-details watermark-output-details">Verified output dimensions and file size will appear here.</p>
+            <p class="watermark-privacy">Source images and logos are processed locally in this browser and are not sent to an image-processing server. A watermark overlays visible content; it does not prevent copying or screenshots.</p>
+          </section>
+        </div>
+      </section>
+
+      <section class="watermark-help" aria-labelledby="wm-how-title">
+        <h2 id="wm-how-title">How to add a watermark to an image</h2>
+        <ol class="seo-steps">
+          <li><div><strong>Choose your source image</strong><span>Select or drop a JPG, PNG, or WebP image. It is validated and opened in your browser.</span></div></li>
+          <li><div><strong>Choose text or a logo</strong><span>Enter text or upload a logo, then adjust its appearance and position. Position sliders also work with a keyboard.</span></div></li>
+          <li><div><strong>Preview and download</strong><span>Review the preview, choose a supported format, create the verified output, and download a separate copy.</span></div></li>
+        </ol>
+        <p class="watermark-note">The watermark is rendered into the downloaded image. It changes the pixels and does not create an invisible ownership mark or prevent reuse.</p>
+      </section>
+      <section class="seo-faq watermark-faq" aria-labelledby="wm-faq-title">
+        <h2 id="wm-faq-title">Watermark questions</h2>
+        <details class="faq-item"><summary>Can I use a transparent logo?</summary><p>Yes. PNG and WebP logos with transparency are supported. A JPG or other opaque logo is also accepted; its background remains visible in the watermark.</p></details>
+        <details class="faq-item"><summary>Does a watermark protect an image from being copied?</summary><p>No. A visible overlay may identify an image, but it cannot prevent copying, screenshots, cropping, or other reuse.</p></details>
+        <details class="faq-item"><summary>Will my image be uploaded?</summary><p>The watermark tool processes the selected image and logo in this browser and does not transmit them to an image-processing server. See the <a href="privacy-policy.html">Privacy Policy</a> for other website services.</p></details>
+      </section>
+      <section class="watermark-related" aria-labelledby="wm-related-title">
+        <h2 id="wm-related-title">Related image tools</h2>
+        <ul class="seo-related">
+          <li><a href="image-cropper.html">Crop an image to a chosen frame</a></li>
+          <li><a href="social-media-image-resizer.html">Resize an image for social media</a></li>
+          <li><a href="index.html#image-resizer">Resize an image to custom dimensions</a></li>
+        </ul>
+      </section>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="container">
+    <div class="footer-main">
+      <div class="footer-about"><a class="brand footer-brand" href="index.html#top"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M3.5 18.5 9 11l3.5 4 3-3.5 5 7H3.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="16.8" cy="7.2" r="2" fill="currentColor"/></svg></span><span class="brand-name">Creator <span>Image Toolkit</span></span></a><p>Free browser-based image tools for creators.</p></div>
+      <div class="footer-column"><h2>Explore</h2><ul class="footer-links"><li><a href="index.html#tools">Image tools</a></li><li><a href="index.html#how-it-works">How it works</a></li><li><a href="index.html#guides">Tool guides</a></li><li><a href="index.html#faq">FAQ</a></li></ul></div>
+      <div class="footer-column"><h2>Information</h2><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy-policy.html">Privacy policy</a></li><li><a href="terms-of-use.html">Terms of use</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p class="copyright">&copy; <span id="year">2026</span> Creator Image Toolkit</p><a href="index.html#top" class="back-to-top">Back to homepage <span aria-hidden="true">↑</span></a></div>
+  </div></footer>
+</body>
+</html>
