@@ -218,6 +218,37 @@
     return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
   }
 
+  function loadImage(image, url, errorMessage) {
+    return new Promise(function (resolve, reject) {
+      var settled = false;
+      function finish(error) {
+        if (settled) { return; }
+        settled = true;
+        image.removeEventListener('load', onLoad);
+        image.removeEventListener('error', onError);
+        if (error) { reject(error); }
+        else { resolve(); }
+      }
+      function onLoad() {
+        if (!image.naturalWidth || !image.naturalHeight) {
+          finish(new Error(errorMessage));
+          return;
+        }
+        finish();
+      }
+      function onError() {
+        finish(new Error(errorMessage));
+      }
+      image.addEventListener('load', onLoad);
+      image.addEventListener('error', onError);
+      image.src = url;
+      if (image.complete) {
+        if (image.naturalWidth && image.naturalHeight) { onLoad(); }
+        else { onError(); }
+      }
+    });
+  }
+
   function clearOutput() {
     renderVersion += 1;
     outputBlob = null;
@@ -311,16 +342,7 @@
     var url = URL.createObjectURL(blob);
     var image = new Image();
     try {
-      if (typeof image.decode === 'function') {
-        image.src = url;
-        await image.decode();
-      } else {
-        await new Promise(function (resolve, reject) {
-          image.onload = resolve;
-          image.onerror = function () { reject(new Error('The encoded image could not be decoded.')); };
-          image.src = url;
-        });
-      }
+      await loadImage(image, url, 'The encoded image could not be decoded.');
       if (image.naturalWidth !== width || image.naturalHeight !== height) {
         throw new Error('The encoded output dimensions did not match the requested dimensions.');
       }
@@ -436,15 +458,7 @@
     }
     var image = new Image();
     try {
-      image.src = url;
-      if (typeof image.decode === 'function') {
-        await image.decode();
-      } else {
-        await new Promise(function (resolve, reject) {
-          image.onload = resolve;
-          image.onerror = function () { reject(new Error('The browser could not decode this image.')); };
-        });
-      }
+      await loadImage(image, url, 'The browser could not decode this image.');
     } catch (error) {
       image.removeAttribute('src');
       URL.revokeObjectURL(url);
@@ -778,15 +792,7 @@
       }
       var image = new Image();
       try {
-        image.src = url;
-        if (typeof image.decode === 'function') {
-          await image.decode();
-        } else {
-          await new Promise(function (resolve, reject) {
-            image.onload = resolve;
-            image.onerror = function () { reject(new Error('The browser could not decode this image.')); };
-          });
-        }
+        await loadImage(image, url, 'The browser could not decode this image.');
       } catch (error) {
         image.removeAttribute('src');
         URL.revokeObjectURL(url);
@@ -890,15 +896,7 @@
         var verificationUrl = URL.createObjectURL(blob);
         var verificationImage = new Image();
         try {
-          verificationImage.src = verificationUrl;
-          if (typeof verificationImage.decode === 'function') {
-            await verificationImage.decode();
-          } else {
-            await new Promise(function (resolve, reject) {
-              verificationImage.onload = resolve;
-              verificationImage.onerror = function () { reject(new Error('The encoded image could not be decoded.')); };
-            });
-          }
+          await loadImage(verificationImage, verificationUrl, 'The encoded image could not be decoded.');
         } catch (error) {
           verificationImage.removeAttribute('src');
           URL.revokeObjectURL(verificationUrl);
@@ -1131,15 +1129,7 @@
       }
       var image = new Image();
       try {
-        image.src = url;
-        if (typeof image.decode === 'function') {
-          await image.decode();
-        } else {
-          await new Promise(function (resolve, reject) {
-            image.onload = resolve;
-            image.onerror = function () { reject(new Error('The browser could not decode this image.')); };
-          });
-        }
+        await loadImage(image, url, 'The browser could not decode this image.');
       } catch (error) {
         image.removeAttribute('src');
         URL.revokeObjectURL(url);
@@ -1246,15 +1236,7 @@
         var verificationUrl = URL.createObjectURL(blob);
         var verificationImage = new Image();
         try {
-          verificationImage.src = verificationUrl;
-          if (typeof verificationImage.decode === 'function') {
-            await verificationImage.decode();
-          } else {
-            await new Promise(function (resolve, reject) {
-              verificationImage.onload = resolve;
-              verificationImage.onerror = function () { reject(new Error('The encoded thumbnail could not be decoded.')); };
-            });
-          }
+          await loadImage(verificationImage, verificationUrl, 'The encoded thumbnail could not be decoded.');
         } catch (error) {
           verificationImage.removeAttribute('src');
           URL.revokeObjectURL(verificationUrl);
