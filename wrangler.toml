@@ -1,0 +1,6 @@
+name = "creator-image-toolkit"
+compatibility_date = "2026-10-12"
+
+[assets]
+directory = "."
+not_found_handling = "404-page"
