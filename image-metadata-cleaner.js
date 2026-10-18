@@ -44,15 +44,15 @@
     file.slice(0,16).arrayBuffer().then(function(sig){
       if(current!==version)return;
       if(!validSignature(sig,file.type)){say('The file contents do not match the declared image type. Choose a valid JPG, PNG, or WebP.');return;}
-      sourceUrl=URL.createObjectURL(file);
+      var fileUrl=URL.createObjectURL(file);sourceUrl=fileUrl;
       var img=new Image();
       img.onload=function(){
-        if(current!==version){revoke(sourceUrl);return;}
-        if(!img.naturalWidth||!img.naturalHeight||img.naturalWidth>MAX_DIMENSION||img.naturalHeight>MAX_DIMENSION||img.naturalWidth*img.naturalHeight>MAX_PIXELS){revoke(sourceUrl);sourceUrl=null;say('This image exceeds the supported dimensions. Maximum: 16,384 pixels per side and 40 megapixels.');return;}
+        if(current!==version){revoke(fileUrl);return;}
+        if(!img.naturalWidth||!img.naturalHeight||img.naturalWidth>MAX_DIMENSION||img.naturalHeight>MAX_DIMENSION||img.naturalWidth*img.naturalHeight>MAX_PIXELS){revoke(fileUrl);if(sourceUrl===fileUrl)sourceUrl=null;say('This image exceeds the supported dimensions. Maximum: 16,384 pixels per side and 40 megapixels.');return;}
         sourceImage=img;sourceFile=file;selected.hidden=false;fileName.textContent=file.name;sourceDetails.textContent=img.naturalWidth+' × '+img.naturalHeight+' · '+bytes(file.size);originalInfo.textContent=img.naturalWidth+' × '+img.naturalHeight+' · '+bytes(file.size);originalPreview.src=sourceUrl;originalPreview.hidden=false;originalPlaceholder.hidden=true;format.disabled=false;jpegBg.disabled=false;processButton.disabled=false;resetButton.disabled=false;say('Image ready. Create a re-encoded copy when you are ready.');
       };
-      img.onerror=function(){if(current!==version)return;revoke(sourceUrl);sourceUrl=null;sourceImage=null;sourceFile=null;say('The image could not be decoded. Choose a valid image file.');};
-      img.src=sourceUrl;
+      img.onerror=function(){revoke(fileUrl);if(current!==version)return;if(sourceUrl===fileUrl)sourceUrl=null;sourceImage=null;sourceFile=null;say('The image could not be decoded. Choose a valid image file.');};
+      img.src=fileUrl;
     }).catch(function(){if(current===version)say('The file could not be read. Try another image.');});
   }
   function makeOutput(){
