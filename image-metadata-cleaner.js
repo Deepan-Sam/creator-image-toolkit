@@ -31,7 +31,12 @@
   function validSignature(buffer,type){var b=new Uint8Array(buffer);if(type==='image/jpeg')return b.length>2&&b[0]===255&&b[1]===216&&b[2]===255;if(type==='image/png')return b.length>8&&b[0]===137&&b[1]===80&&b[2]===78&&b[3]===71&&b[4]===13&&b[5]===10&&b[6]===26&&b[7]===10;if(type==='image/webp')return b.length>12&&String.fromCharCode.apply(null,b.slice(0,4))==='RIFF'&&String.fromCharCode.apply(null,b.slice(8,12))==='WEBP';return false;}
   function loadFile(file){
     if(!file){say('Choose an image to get started.');return;}
-    var current=++version;clearOutput();
+    var current=++version;
+    revoke(sourceUrl);sourceUrl=null;sourceImage=null;sourceFile=null;
+    originalPreview.removeAttribute('src');originalPreview.hidden=true;originalPlaceholder.hidden=false;
+    originalInfo.textContent='Dimensions and file size will appear here.';
+    selected.hidden=true;format.disabled=true;jpegBg.disabled=true;processButton.disabled=true;resetButton.disabled=true;
+    clearOutput();
     if(file.size===0){say('This file is empty. Choose another image.');return;}
     if(file.size>MAX_BYTES){say('This image exceeds the 20 MB file limit. Choose a smaller file.');return;}
     if(!types[file.type]){say('Unsupported file type. Choose a JPG, PNG, or WebP image.');return;}
@@ -82,8 +87,8 @@
   ['dragenter','dragover'].forEach(function(name){dropzone.addEventListener(name,function(e){e.preventDefault();dropzone.classList.add('is-dragging');});});
   ['dragleave','drop'].forEach(function(name){dropzone.addEventListener(name,function(e){e.preventDefault();dropzone.classList.remove('is-dragging');});});
   dropzone.addEventListener('drop',function(e){var f=e.dataTransfer&&e.dataTransfer.files&&e.dataTransfer.files[0];if(f)loadFile(f);});
-  format.addEventListener('change',function(){clearOutput();if(sourceImage)say('Output format changed. Create the copy again to apply it.');});
-  jpegBg.addEventListener('change',function(){if(format.value==='image/jpeg'){clearOutput();if(sourceImage)say('JPEG background changed. Create the copy again to apply it.');}});
+  format.addEventListener('change',function(){version++;clearOutput();processButton.disabled=!sourceImage;if(sourceImage)say('Output format changed. Create the copy again to apply it.');});
+  jpegBg.addEventListener('change',function(){if(format.value==='image/jpeg'){version++;clearOutput();processButton.disabled=!sourceImage;if(sourceImage)say('JPEG background changed. Create the copy again to apply it.');}});
   processButton.addEventListener('click',makeOutput);
   downloadButton.addEventListener('click',function(){if(!outputBlob||!outputUrl){say('Create a verified output before downloading.');return;}var a=document.createElement('a');a.href=outputUrl;var ext=types[outputBlob.type]||'png';var base=(sourceFile.name||'image').replace(/\.[^.]+$/,'').replace(/[^a-z0-9_-]+/gi,'-').replace(/^-+|-+$/g,'')||'image';a.download=base+'-reencoded.'+ext;document.body.appendChild(a);a.click();a.remove();say('Download started. Review the downloaded file before sharing.');});
   resetButton.addEventListener('click',reset);
