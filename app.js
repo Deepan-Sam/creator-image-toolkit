@@ -27,9 +27,15 @@
         toggle.focus();
       }
     });
-    window.matchMedia('(min-width: 48em)').addEventListener('change', function (event) {
+    var desktopQuery = window.matchMedia('(min-width: 48em)');
+    var closeMenuOnDesktop = function (event) {
       if (event.matches) { setMenu(false); }
-    });
+    };
+    if (typeof desktopQuery.addEventListener === 'function') {
+      desktopQuery.addEventListener('change', closeMenuOnDesktop);
+    } else if (typeof desktopQuery.addListener === 'function') {
+      desktopQuery.addListener(closeMenuOnDesktop);
+    }
   }
 
   var year = document.getElementById('year');
@@ -43,6 +49,8 @@
   var lockLabel = document.getElementById('lock-label');
   var formatInput = document.getElementById('output-format');
   var downloadButton = document.getElementById('download-image');
+  var resizeActionButton = document.getElementById('resize-image-action');
+  var resizerResetButton = document.getElementById('resizer-reset');
   var status = document.getElementById('resizer-status');
   var sourcePreview = document.getElementById('source-preview');
   var sourcePlaceholder = document.getElementById('source-placeholder');
@@ -54,6 +62,126 @@
   if (!fileInput || !maxFileSizeInput || !widthInput || !heightInput || !aspectLock ||
       !formatInput || !downloadButton || !status) {
     return;
+  }
+
+  function bindToolDropzone(input, dropzone, browseButton, updateStatus) {
+    if (!input || !dropzone || !browseButton) { return; }
+    browseButton.addEventListener('click', function () {
+      input.click();
+    });
+    input.addEventListener('change', function () {
+      if (input.files && input.files.length) {
+        updateStatus('Checking selected image…', 'info');
+      }
+    });
+    dropzone.addEventListener('dragenter', function (event) {
+      event.preventDefault();
+      dropzone.classList.add('is-dragging');
+    });
+    dropzone.addEventListener('dragover', function (event) {
+      event.preventDefault();
+      if (event.dataTransfer) { event.dataTransfer.dropEffect = 'copy'; }
+    });
+    dropzone.addEventListener('dragleave', function (event) {
+      if (!event.relatedTarget || !dropzone.contains(event.relatedTarget)) {
+        dropzone.classList.remove('is-dragging');
+      }
+    });
+    dropzone.addEventListener('drop', function (event) {
+      event.preventDefault();
+      dropzone.classList.remove('is-dragging');
+      var files = event.dataTransfer && event.dataTransfer.files;
+      if (!files || !files.length) {
+        updateStatus('No file was found. Choose a JPG, PNG, or WebP image.', 'error');
+        return;
+      }
+      if (files.length !== 1) {
+        updateStatus('Please drop one image at a time.', 'error');
+        return;
+      }
+      try {
+        var transfer = new DataTransfer();
+        transfer.items.add(files[0]);
+        input.files = transfer.files;
+        updateStatus('Checking selected image…', 'info');
+        input.dispatchEvent(new Event('change', { bubbles: true }));
+      } catch (error) {
+        updateStatus('Drag-and-drop is unavailable in this browser. Use “browse files” instead.', 'error');
+      }
+    });
+  }
+
+  bindToolDropzone(
+    fileInput,
+    document.getElementById('resizer-dropzone'),
+    document.getElementById('resizer-browse'),
+    function (message, state) { setStatus(message, state); }
+  );
+
+  var heroDropzone = document.getElementById('hero-upload-dropzone');
+  var heroBrowseButton = document.getElementById('hero-browse-button');
+  var heroUploadStatus = document.getElementById('hero-upload-status');
+
+  function setHeroUploadStatus(message, state) {
+    if (!heroUploadStatus) { return; }
+    heroUploadStatus.textContent = message;
+    heroUploadStatus.dataset.state = state || 'info';
+  }
+
+  if (heroDropzone && heroBrowseButton && heroUploadStatus) {
+    var statusObserver = new MutationObserver(function () {
+      setHeroUploadStatus(status.textContent, status.dataset.state);
+    });
+    statusObserver.observe(status, { childList: true, characterData: true, subtree: true, attributes: true });
+
+    heroBrowseButton.addEventListener('click', function () {
+      fileInput.click();
+    });
+
+    fileInput.addEventListener('change', function () {
+      if (fileInput.files && fileInput.files.length) {
+        setHeroUploadStatus('Checking selected image…');
+      }
+    });
+
+    heroDropzone.addEventListener('dragenter', function (event) {
+      event.preventDefault();
+      heroDropzone.classList.add('is-dragging');
+    });
+
+    heroDropzone.addEventListener('dragover', function (event) {
+      event.preventDefault();
+      if (event.dataTransfer) { event.dataTransfer.dropEffect = 'copy'; }
+    });
+
+    heroDropzone.addEventListener('dragleave', function (event) {
+      if (!event.relatedTarget || !heroDropzone.contains(event.relatedTarget)) {
+        heroDropzone.classList.remove('is-dragging');
+      }
+    });
+
+    heroDropzone.addEventListener('drop', function (event) {
+      event.preventDefault();
+      heroDropzone.classList.remove('is-dragging');
+      var files = event.dataTransfer && event.dataTransfer.files;
+      if (!files || !files.length) {
+        setHeroUploadStatus('No file was found. Choose a JPG, PNG, or WebP image.', 'error');
+        return;
+      }
+      if (files.length !== 1) {
+        setHeroUploadStatus('Please drop one image at a time.', 'error');
+        return;
+      }
+      try {
+        var transfer = new DataTransfer();
+        transfer.items.add(files[0]);
+        fileInput.files = transfer.files;
+        setHeroUploadStatus('Checking selected image…');
+        fileInput.dispatchEvent(new Event('change', { bubbles: true }));
+      } catch (error) {
+        setHeroUploadStatus('Drag-and-drop is not available in this browser. Use “browse files” instead.', 'error');
+      }
+    });
   }
 
   var maxDimension = 16384;
@@ -106,10 +234,14 @@
 
   function clearSource() {
     clearOutput();
+    ratioLocked = true;
+    aspectLock.setAttribute('aria-pressed', 'true');
+    aspectLock.setAttribute('aria-label', 'Aspect ratio locked');
+    lockLabel.textContent = 'Ratio locked';
     sourcePreview.removeAttribute('src');
     sourcePreview.hidden = true;
     sourcePlaceholder.hidden = false;
-    sourceDetails.textContent = 'Dimensions and file size will appear here.';
+    sourceDetails.textContent = 'No image selected';
     if (sourceImage) {
       sourceImage.removeAttribute('src');
       sourceImage = null;
@@ -122,8 +254,12 @@
     heightInput.value = '';
     widthInput.disabled = true;
     heightInput.disabled = true;
+    widthInput.removeAttribute('aria-invalid');
+    heightInput.removeAttribute('aria-invalid');
     aspectLock.disabled = true;
     formatInput.disabled = true;
+    if (resizeActionButton) { resizeActionButton.disabled = true; }
+    if (resizerResetButton) { resizerResetButton.disabled = true; }
   }
 
   function getLimitBytes(input) {
@@ -243,9 +379,10 @@
     context.drawImage(image, 0, 0, width, height);
   }
 
-  function initializeFormats() {
+  function initializeFormats(preferredMime) {
     var options = formatInput.options;
     var firstSupported = null;
+    var preferredSupported = null;
     for (var i = 0; i < options.length; i += 1) {
       var option = options[i];
       var supported = supportsOutput(option.value);
@@ -254,8 +391,9 @@
         option.text += ' (not supported)';
       }
       if (supported && firstSupported === null) { firstSupported = option.value; }
+      if (supported && option.value === preferredMime) { preferredSupported = option.value; }
     }
-    if (firstSupported) { formatInput.value = firstSupported; }
+    if (preferredSupported || firstSupported) { formatInput.value = preferredSupported || firstSupported; }
     return firstSupported !== null;
   }
 
@@ -273,6 +411,7 @@
       setStatus('Choose an image to get started.');
       return;
     }
+    sourceDetails.textContent = file.name + ' · ' + formatBytes(file.size) + ' · Checking image…';
 
     var mime;
     try {
@@ -334,10 +473,11 @@
 
     sourceUrl = url;
     sourceImage = image;
+    sourcePreview.alt = file.name + ' original image preview';
     sourcePreview.src = url;
     sourcePreview.hidden = false;
     sourcePlaceholder.hidden = true;
-    sourceDetails.textContent = imageWidth + ' × ' + imageHeight + ' px · ' + formatBytes(file.size);
+    sourceDetails.textContent = file.name + ' · ' + imageWidth + ' × ' + imageHeight + ' px · ' + formatBytes(file.size);
     aspectRatio = imageWidth / imageHeight;
     widthInput.value = String(imageWidth);
     heightInput.value = String(imageHeight);
@@ -345,8 +485,10 @@
     heightInput.disabled = false;
     aspectLock.disabled = false;
     formatInput.disabled = false;
+    if (resizeActionButton) { resizeActionButton.disabled = false; }
+    if (resizerResetButton) { resizerResetButton.disabled = false; }
 
-    if (!initializeFormats()) {
+    if (!initializeFormats(mime)) {
       setStatus('This browser cannot export images from Canvas.', 'error');
       return;
     }
@@ -361,11 +503,23 @@
   function renderOutput() {
     clearOutput();
     var version = ++renderVersion;
-    if (!sourceImage) { return; }
+    if (!sourceImage) {
+      widthInput.removeAttribute('aria-invalid');
+      heightInput.removeAttribute('aria-invalid');
+      if (resizeActionButton) { resizeActionButton.disabled = true; }
+      return;
+    }
 
     var width = Number(widthInput.value);
     var height = Number(heightInput.value);
-    if (!validDimension(width) || !validDimension(height)) {
+    var widthValid = validDimension(width);
+    var heightValid = validDimension(height);
+    var withinPixelLimit = widthValid && heightValid && width * height <= maxPixels;
+    widthInput.setAttribute('aria-invalid', String(!widthValid || !withinPixelLimit));
+    heightInput.setAttribute('aria-invalid', String(!heightValid || !withinPixelLimit));
+    var dimensionsValid = widthValid && heightValid && withinPixelLimit;
+    if (resizeActionButton) { resizeActionButton.disabled = !dimensionsValid; }
+    if (!widthValid || !heightValid) {
       setStatus('Enter whole-number dimensions from 1 to ' + maxDimension.toLocaleString() + ' pixels.', 'error');
       return;
     }
@@ -431,6 +585,7 @@
       }
       outputBlob = blob;
       outputUrl = verifiedUrl;
+      resultPreview.alt = selectedFile.name + ' resized image preview';
       resultPreview.src = outputUrl;
       resultPreview.hidden = false;
       resultPlaceholder.hidden = true;
@@ -454,6 +609,17 @@
   fileInput.addEventListener('change', function () {
     loadFile(fileInput.files && fileInput.files[0]);
   });
+  if (resizeActionButton) {
+    resizeActionButton.addEventListener('click', function () {
+      renderOutput();
+    });
+  }
+  if (resizerResetButton) {
+    resizerResetButton.addEventListener('click', function () {
+      fileInput.value = '';
+      fileInput.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+  }
 
   maxFileSizeInput.addEventListener('change', function () {
     if (selectedFile) { loadFile(selectedFile); }
@@ -517,11 +683,19 @@
   var compressResultPlaceholder = document.getElementById('compress-result-placeholder');
   var compressResultDetails = document.getElementById('compress-result-details');
   var compressDownloadButton = document.getElementById('download-compressed');
+  var compressActionButton = document.getElementById('compress-image-action');
+  var compressResetButton = document.getElementById('compress-reset');
 
   if (compressFileInput && compressMaxSizeInput && compressQualityInput && compressQualityValue &&
       compressQualityNote && compressStatus && compressSourcePreview && compressSourcePlaceholder &&
       compressOriginalDetails && compressResultPreview && compressResultPlaceholder &&
       compressResultDetails && compressDownloadButton) {
+    bindToolDropzone(
+      compressFileInput,
+      document.getElementById('compress-dropzone'),
+      document.getElementById('compress-browse'),
+      function (message, state) { setCompressStatus(message, state); }
+    );
     var compressSourceUrl = null;
     var compressOutputUrl = null;
     var compressSourceImage = null;
@@ -555,7 +729,7 @@
       compressSourcePreview.removeAttribute('src');
       compressSourcePreview.hidden = true;
       compressSourcePlaceholder.hidden = false;
-      compressOriginalDetails.textContent = 'Original size will appear here.';
+      compressOriginalDetails.textContent = 'No image selected';
       if (compressSourceImage) {
         compressSourceImage.removeAttribute('src');
         compressSourceImage = null;
@@ -565,6 +739,8 @@
         compressSourceUrl = null;
       }
       compressQualityInput.disabled = true;
+      if (compressActionButton) { compressActionButton.disabled = true; }
+      if (compressResetButton) { compressResetButton.disabled = true; }
       compressMime = null;
     }
 
@@ -576,6 +752,7 @@
         setCompressStatus('Choose an image to get started.');
         return;
       }
+      compressOriginalDetails.textContent = file.name + ' · ' + formatBytes(file.size) + ' · Checking image…';
 
       try {
         compressMime = await validateFileMime(file);
@@ -640,10 +817,12 @@
 
       compressSourceUrl = url;
       compressSourceImage = image;
+      compressSourcePreview.alt = file.name + ' original image preview';
       compressSourcePreview.src = url;
       compressSourcePreview.hidden = false;
       compressSourcePlaceholder.hidden = true;
-      compressOriginalDetails.textContent = imageWidth + ' × ' + imageHeight + ' px · Original size: ' + formatBytes(file.size);
+      compressOriginalDetails.textContent = file.name + ' · ' + imageWidth + ' × ' + imageHeight +
+        ' px · Original: ' + formatBytes(file.size);
       var canEncode = supportsOutput(compressMime);
       compressQualityInput.disabled = compressMime === 'image/png' || !canEncode;
       compressQualityNote.textContent = compressMime === 'image/png'
@@ -655,6 +834,8 @@
           ' output using Canvas. Try another supported input format or browser.', 'error');
         return;
       }
+      if (compressActionButton) { compressActionButton.disabled = false; }
+      if (compressResetButton) { compressResetButton.disabled = false; }
       setCompressStatus('Image ready. Adjust the quality and review the output.', 'success');
       createCompressedOutput();
     }
@@ -738,6 +919,7 @@
 
         compressOutputBlob = blob;
         compressOutputUrl = verificationUrl;
+        compressResultPreview.alt = compressSelectedFile.name + ' compressed image preview';
         compressResultPreview.src = verificationUrl;
         compressResultPreview.hidden = false;
         compressResultPlaceholder.hidden = true;
@@ -770,6 +952,17 @@
     compressFileInput.addEventListener('change', function () {
       loadCompressorFile(compressFileInput.files && compressFileInput.files[0]);
     });
+    if (compressActionButton) {
+      compressActionButton.addEventListener('click', function () {
+        createCompressedOutput();
+      });
+    }
+    if (compressResetButton) {
+      compressResetButton.addEventListener('click', function () {
+        compressFileInput.value = '';
+        compressFileInput.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+    }
     compressMaxSizeInput.addEventListener('change', function () {
       if (compressSelectedFile) {
         loadCompressorFile(compressSelectedFile);
@@ -884,9 +1077,10 @@
       thumbnailPositionY.disabled = true;
     }
 
-    function initializeThumbnailFormats() {
+    function initializeThumbnailFormats(preferredMime) {
       var options = thumbnailFormatInput.options;
       var firstSupported = null;
+      var preferredSupported = null;
       for (var i = 0; i < options.length; i += 1) {
         var option = options[i];
         var supported = supportsOutput(option.value);
@@ -895,8 +1089,11 @@
           option.text += ' (not supported)';
         }
         if (supported && firstSupported === null) { firstSupported = option.value; }
+        if (supported && option.value === preferredMime) { preferredSupported = option.value; }
       }
-      if (firstSupported) { thumbnailFormatInput.value = firstSupported; }
+      if (preferredSupported || firstSupported) {
+        thumbnailFormatInput.value = preferredSupported || firstSupported;
+      }
       return firstSupported !== null;
     }
 
@@ -973,13 +1170,14 @@
 
       thumbnailSourceUrl = url;
       thumbnailSourceImage = image;
+      thumbnailSourcePreview.alt = file.name + ' original image preview';
       thumbnailSourcePreview.src = url;
       thumbnailSourcePreview.hidden = false;
       thumbnailSourcePlaceholder.hidden = true;
       thumbnailSourceDetails.textContent = imageWidth + ' × ' + imageHeight + ' px · ' + formatBytes(file.size);
       thumbnailModeInput.disabled = false;
       thumbnailFormatInput.disabled = false;
-      var formatsSupported = initializeThumbnailFormats();
+      var formatsSupported = initializeThumbnailFormats(thumbnailMime);
       if (!formatsSupported) {
         setThumbnailStatus('This browser cannot export images from Canvas.', 'error');
         return;
@@ -1079,6 +1277,7 @@
 
         thumbnailOutputBlob = blob;
         thumbnailOutputUrl = verificationUrl;
+        thumbnailResultPreview.alt = thumbnailSelectedFile.name + ' 1280 by 720 thumbnail preview';
         thumbnailResultPreview.src = verificationUrl;
         thumbnailResultPreview.hidden = false;
         thumbnailResultPlaceholder.hidden = true;

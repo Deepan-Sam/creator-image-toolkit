@@ -3,51 +3,47 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>Creator Image Toolkit – Free Image Resizer, Compressor &amp; Thumbnail Tool</title>
-  <meta name="description" content="Resize, compress, and prepare 1280 × 720 thumbnails from JPG, PNG, and WebP images locally in your browser. Free and no account required.">
-
-  <meta name="theme-color" content="#4338ca">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%234338ca'/%3E%3Cpath d='M20 70l20-26 14 16 10-12 16 22z' fill='%23fff'/%3E%3Ccircle cx='68' cy='34' r='8' fill='%23fff'/%3E%3C/svg%3E">
-
-  <!-- Open Graph (Facebook, LinkedIn, Discord, etc.) -->
+  <title>Free Image Tools for Creators | Creator Image Toolkit</title>
+  <meta name="description" content="Resize, compress, and prepare JPG, PNG, and WebP images with free browser-based tools. Compare output and download your processed image.">
+  <link rel="canonical" href="https://creatorimagekit.com/">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%234f46e5'/%3E%3Cpath d='M18 72l22-28 14 17 12-14 17 25z' fill='white'/%3E%3Ccircle cx='69' cy='32' r='8' fill='white'/%3E%3C/svg%3E">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Creator Image Toolkit">
-  <meta property="og:title" content="Creator Image Toolkit – Image Resizer, Compressor &amp; Thumbnail Tool">
-  <meta property="og:description" content="Resize, compress, and prepare 1280 × 720 thumbnails in your browser for free. No account required.">
-
-  <!-- Twitter / X -->
+  <meta property="og:title" content="Creator Image Toolkit — Free Image Tools for Creators">
+  <meta property="og:description" content="Resize, compress, and prepare JPG, PNG, and WebP images with browser-based tools for creators.">
+  <meta property="og:url" content="https://creatorimagekit.com/">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Creator Image Toolkit – Image Tools for Creators">
-  <meta name="twitter:description" content="Resize, compress, and prepare 1280 × 720 thumbnails locally in your browser.">
-
+  <meta name="twitter:title" content="Creator Image Toolkit — Free Image Tools for Creators">
+  <meta name="twitter:description" content="Resize, compress, and prepare JPG, PNG, and WebP images with browser-based tools.">
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
 
-  <!-- ===== Header ===== -->
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="#top" aria-label="Creator Image Toolkit – home">
+      <a class="brand" href="#top" aria-label="Creator Image Toolkit home">
         <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 19l6-8 4 5 3-4 5 7z"/><circle cx="17" cy="7" r="2.2"/></svg>
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+            <path d="M3.5 18.5 9 11l3.5 4 3-3.5 5 7H3.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <circle cx="16.8" cy="7.2" r="2" fill="currentColor"/>
+          </svg>
         </span>
-        <span class="brand-name">Creator Image Toolkit</span>
+        <span class="brand-name">Creator <span>Image Toolkit</span></span>
       </a>
 
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
         <span class="nav-toggle-label">Menu</span>
       </button>
-
-      <nav class="site-nav" id="site-nav" aria-label="Main">
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
         <ul>
           <li><a href="#tools">Tools</a></li>
           <li><a href="#how-it-works">How it works</a></li>
-          <li><a href="#privacy">Privacy</a></li>
           <li><a href="#guides">Guides</a></li>
           <li><a href="#faq">FAQ</a></li>
+          <li><a href="#about">About</a></li>
         </ul>
       </nav>
     </div>
@@ -55,186 +51,175 @@
 
   <main id="main">
     <span id="top"></span>
-
-    <!-- ===== Hero ===== -->
     <section class="hero" aria-labelledby="hero-title">
-      <div class="container hero-inner">
-        <p class="eyebrow">For YouTubers, streamers, bloggers &amp; social creators</p>
-        <h1 id="hero-title">Get your images the right size, without the heavy files.</h1>
-        <p class="lead">
-          Creator Image Toolkit is a free set of image tools that run in your web browser.
-          Resize JPG, PNG, and WebP images locally on your device. No account or sign-up required.
-        </p>
-        <p class="status-note">
-          <span class="badge">Tools available</span>
-          Resize, compress, or prepare a 1280 × 720 thumbnail.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#tools">Use the image tools</a>
-          <a class="btn btn-secondary" href="#privacy">How privacy works</a>
+      <div class="container hero-layout">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Made for your creative workflow</p>
+          <h1 id="hero-title">Free Image Tools<br><span>for Every Creator</span></h1>
+          <p class="lead">Resize, compress, and prepare images for YouTube, social media, and your website — quickly and easily.</p>
+          <a class="hero-explore-link" href="#tools">Explore all tools <span aria-hidden="true">→</span></a>
+        </div>
+
+        <div class="hero-upload-card" id="hero-upload-dropzone" aria-describedby="hero-upload-help hero-upload-status">
+          <div class="upload-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 14v5h14v-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h2>Drop your image here</h2>
+          <p class="upload-or">or <button id="hero-browse-button" class="browse-button" type="button">browse files</button></p>
+          <p class="upload-file-note" id="hero-upload-help">JPG, PNG, or WebP · Up to 20 MB per file by default. The limit can be adjusted in the image resizer.</p>
+          <p class="upload-privacy">Your image is processed locally in your browser and is not sent to an image-processing server.</p>
+          <p class="hero-upload-status" id="hero-upload-status" role="status" aria-live="polite">Choose or drop one image to begin.</p>
         </div>
       </div>
+      <div class="hero-background-mark" aria-hidden="true"></div>
     </section>
 
-    <!-- ===== Tools ===== -->
-    <section class="section" id="tools" aria-labelledby="tools-title">
+    <section class="section tools-section" id="tools" aria-labelledby="tools-title">
       <div class="container">
-        <h2 id="tools-title">Tools</h2>
-        <p class="section-intro">
-          Resize, compress, and prepare 1280 × 720 thumbnails in your browser without uploading images.
-        </p>
+        <div class="section-heading">
+          <p class="eyebrow">Your toolkit</p>
+          <h2 id="tools-title">Everything you need to get your images ready</h2>
+          <p class="section-intro">Pick a tool to get started. Image processing happens locally in your browser.</p>
+        </div>
 
-        <div class="card-grid">
-          <article class="card resizer-card">
-            <div class="card-head">
-              <h3>Image Resizer</h3>
-              <span class="badge">Ready to use</span>
+        <div class="tool-directory">
+          <a class="tool-card" href="#image-resizer" aria-label="Image Resizer: set custom dimensions">
+            <span class="tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M8 3H5a2 2 0 0 0-2 2v3m13-5h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3m13 5h3a2 2 0 0 0 2-2v-3M8 8h8v8H8z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="tool-card-copy"><strong>Image Resizer</strong><span>Set custom dimensions and keep the proportions you need.</span><span class="tool-action">Resize image <span aria-hidden="true">→</span></span></span>
+          </a>
+          <a class="tool-card" href="#image-compressor" aria-label="Image Compressor: reduce image file size">
+            <span class="tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M7 4v6m10-6v6M5 13h14M8 10v10m8-10v10M5 20h14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="tool-card-copy"><strong>Image Compressor</strong><span>Compare a re-encoded image with the original file size.</span><span class="tool-action">Compress image <span aria-hidden="true">→</span></span></span>
+          </a>
+          <a class="tool-card" href="#thumbnail-resizer" aria-label="YouTube Thumbnail Resizer: prepare a 1280 by 720 thumbnail">
+            <span class="tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.7"/><circle cx="8.5" cy="9" r="1.5" stroke="currentColor" stroke-width="1.5"/><path d="m5 18 5-5 3 3 3-4 3 3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="tool-card-copy"><strong>YouTube Thumbnail Resizer</strong><span>Prepare a 1280 × 720 thumbnail with fit or crop options.</span><span class="tool-action">Make a thumbnail <span aria-hidden="true">→</span></span></span>
+          </a>
+          <a class="tool-card" href="#image-resizer" aria-label="Image Format Converter: choose another output format in the image resizer">
+            <span class="tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 7h10M7 12h6m-6 5h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="m15 9 2 2 2-2M9 15l-2 2-2-2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="tool-card-copy"><strong>Image Format Converter</strong><span>Choose JPEG, PNG, or WebP as the resized image’s output format.</span><span class="tool-action">Choose a format <span aria-hidden="true">→</span></span></span>
+          </a>
+          <article class="tool-card tool-card-upcoming" aria-label="Social Media Image Resizer, coming soon">
+            <span class="tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.7"/><rect x="13" y="3" width="8" height="5" rx="1.5" stroke="currentColor" stroke-width="1.7"/><rect x="13" y="10" width="8" height="11" rx="1.5" stroke="currentColor" stroke-width="1.7"/><rect x="3" y="13" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.7"/></svg></span>
+            <span class="tool-card-copy"><strong>Social Media Image Resizer</strong><span>Prepare images to fit common social platform dimensions.</span><span class="tool-coming-soon">Coming soon</span></span>
+          </article>
+          <article class="tool-card tool-card-upcoming" aria-label="Batch Image Resizer, coming soon">
+            <span class="tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="13" height="13" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 20h10a2 2 0 0 0 2-2V8M8 9h5M8 12h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+            <span class="tool-card-copy"><strong>Batch Image Resizer</strong><span>Resize multiple images with consistent output settings.</span><span class="tool-coming-soon">Coming soon</span></span>
+          </article>
+        </div>
+
+        <div class="tool-workspaces">
+          <article class="card tool-panel resizer-card" id="image-resizer" aria-labelledby="resizer-title">
+            <div class="tool-panel-heading">
+              <div><p class="eyebrow">Tool 01</p><h3 id="resizer-title">Image resizer</h3></div>
+              <span class="availability"><span aria-hidden="true"></span>Ready to use</span>
             </div>
-            <p>Choose an image, set its output dimensions, then download the resized copy. Your image is processed only in this browser.</p>
-
-            <div class="resizer-controls">
-              <div class="field-group">
-                <label for="image-file">Choose an image (JPG, PNG, or WebP)</label>
-                <input id="image-file" type="file" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp">
-              </div>
-              <div class="field-group">
-                <label for="max-file-size">Maximum file size</label>
-                <div class="input-suffix">
-                  <input id="max-file-size" type="number" min="1" max="100" step="1" value="20" inputmode="numeric">
-                  <span>MB</span>
-                </div>
-                <small>Set a limit from 1 to 100 MB. Default: 20 MB.</small>
-              </div>
+            <p class="tool-description">Change an image’s dimensions and download a resized copy. The original file is not changed.</p>
+            <p class="tool-guide-link"><a href="image-resizer.html">Read the image resizing guide</a></p>
+            <p class="tool-guide-link"><a href="image-format-converter.html">Learn about image format conversion</a></p>
+            <div class="tool-upload-zone" id="resizer-dropzone" aria-describedby="resizer-upload-help resizer-status">
+              <span class="tool-upload-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 14v5h14v-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <strong>Drop an image here</strong>
+              <span class="upload-or">or <button id="resizer-browse" class="browse-button" type="button">browse files</button></span>
+              <small id="resizer-upload-help">JPG, PNG, or WebP · Maximum 20 MB by default; change the limit below.</small>
+              <input id="image-file" class="visually-hidden file-picker" type="file" tabindex="-1" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" aria-label="Choose an image to resize">
             </div>
-
+            <div class="selected-file-panel">
+              <span class="selected-file-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+              <div class="selected-file-copy"><strong>Selected image</strong><p id="source-details" class="image-details">No image selected</p></div>
+              <button id="resizer-reset" class="btn-reset" type="button" disabled>Start over</button>
+            </div>
             <p id="resizer-status" class="tool-status" role="status" aria-live="polite">Choose an image to get started.</p>
-
             <div class="resizer-workspace">
               <section class="image-panel" aria-labelledby="source-heading">
-                <h4 id="source-heading" class="card-subtitle">Original image</h4>
-                <div class="image-preview image-preview-empty" id="source-preview-wrap">
-                  <img id="source-preview" alt="Original image preview" hidden>
-                  <span id="source-placeholder">Your preview will appear here.</span>
-                </div>
-                <p id="source-details" class="image-details">Dimensions and file size will appear here.</p>
+                <h4 id="source-heading" class="card-subtitle">Image preview</h4>
+                <div class="image-preview" id="source-preview-wrap"><img id="source-preview" alt="Original image preview" hidden><span id="source-placeholder">Your preview will appear here.</span></div>
               </section>
-
               <section class="image-panel" aria-labelledby="result-heading">
-                <h4 id="result-heading" class="card-subtitle">Resized image</h4>
-                <div class="image-preview image-preview-empty" id="result-preview-wrap">
-                  <img id="result-preview" alt="Resized image preview" hidden>
-                  <span id="result-placeholder">Your resized preview will appear here.</span>
-                </div>
+                <h4 id="result-heading" class="card-subtitle">Resized preview</h4>
+                <div class="image-preview" id="result-preview-wrap"><img id="result-preview" alt="Resized image preview" hidden><span id="result-placeholder">Your resized preview will appear here.</span></div>
                 <p id="result-details" class="image-details" aria-live="polite">Output dimensions and file size will appear here.</p>
               </section>
             </div>
-
             <div class="resizer-controls resize-settings">
               <div class="field-group dimension-fields">
-                <div>
-                  <label for="output-width">Width (px)</label>
-                  <input id="output-width" type="number" min="1" step="1" inputmode="numeric" disabled>
-                </div>
-                <button id="aspect-lock" class="lock-button" type="button" aria-pressed="true" disabled>
-                  <span id="lock-label">Ratio locked</span>
-                </button>
-                <small class="ratio-warning">Unlocking the ratio stretches the image to fit both dimensions.</small>
-                <div>
-                  <label for="output-height">Height (px)</label>
-                  <input id="output-height" type="number" min="1" step="1" inputmode="numeric" disabled>
-                </div>
+                <div><label for="output-width">Width (px)</label><input id="output-width" type="number" min="1" max="16384" step="1" inputmode="numeric" aria-describedby="resizer-dimension-help resizer-status" disabled></div>
+                <button id="aspect-lock" class="lock-button" type="button" aria-pressed="true" disabled><span id="lock-label">Ratio locked</span></button>
+                <small class="ratio-warning" id="resizer-dimension-help">Unlocking the ratio stretches the image to fit both dimensions. Dimensions must be whole numbers and outputs are limited to 40 megapixels.</small>
+                <div><label for="output-height">Height (px)</label><input id="output-height" type="number" min="1" max="16384" step="1" inputmode="numeric" aria-describedby="resizer-dimension-help resizer-status" disabled></div>
               </div>
               <div class="field-group">
                 <label for="output-format">Output format</label>
-                <select id="output-format" disabled>
-                  <option value="image/jpeg">JPEG</option>
-                  <option value="image/png">PNG</option>
-                  <option value="image/webp">WebP</option>
-                </select>
+                <select id="output-format" disabled><option value="image/jpeg">JPEG</option><option value="image/png">PNG</option><option value="image/webp">WebP</option></select>
                 <small>JPEG and WebP use 92% quality. Transparent areas become white in JPEG.</small>
               </div>
+              <div class="field-group">
+                <label for="max-file-size">Maximum file size</label>
+                <div class="input-suffix"><input id="max-file-size" type="number" min="1" max="100" step="1" value="20" inputmode="numeric"><span>MB</span></div>
+                <small>Choose a limit from 1 to 100 MB. Default: 20 MB.</small>
+              </div>
             </div>
-
-            <div class="resizer-actions">
-              <button id="download-image" class="btn btn-primary" type="button" disabled>Download resized image</button>
-            </div>
+            <div class="tool-primary-actions"><button id="resize-image-action" class="btn btn-primary" type="button" disabled>Resize image</button><button id="download-image" class="btn btn-secondary" type="button" disabled>Download resized image</button></div>
           </article>
 
-          <article class="card resizer-card">
-            <div class="card-head">
-              <h3>Image Compressor</h3>
-              <span class="badge">Ready to use</span>
+          <article class="card tool-panel resizer-card" id="image-compressor" aria-labelledby="compressor-title">
+            <div class="tool-panel-heading">
+              <div><p class="eyebrow">Tool 02</p><h3 id="compressor-title">Image compressor</h3></div>
+              <span class="availability"><span aria-hidden="true"></span>Ready to use</span>
             </div>
-            <p>Re-encode an image locally and compare the output with your original before downloading.</p>
-
-            <div class="resizer-controls">
-              <div class="field-group">
-                <label for="compress-file">Choose an image (JPG, PNG, or WebP)</label>
-                <input id="compress-file" type="file" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp">
-              </div>
-              <div class="field-group">
-                <label for="compress-max-file-size">Maximum file size</label>
-                <div class="input-suffix">
-                  <input id="compress-max-file-size" type="number" min="1" max="100" step="1" value="20" inputmode="numeric">
-                  <span>MB</span>
-                </div>
-                <small>Set a limit from 1 to 100 MB. Default: 20 MB.</small>
-              </div>
+            <p class="tool-description">Re-encode an image in your browser, compare the result, and download when it’s ready.</p>
+            <p class="tool-guide-link"><a href="image-compressor.html">Read the image compression guide</a></p>
+            <div class="tool-upload-zone" id="compress-dropzone" aria-describedby="compress-upload-help compress-status">
+              <span class="tool-upload-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 14v5h14v-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <strong>Drop an image here</strong>
+              <span class="upload-or">or <button id="compress-browse" class="browse-button" type="button">browse files</button></span>
+              <small id="compress-upload-help">JPG, PNG, or WebP · Maximum 20 MB by default; change the limit below.</small>
+              <input id="compress-file" class="visually-hidden file-picker" type="file" tabindex="-1" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" aria-label="Choose an image to compress">
             </div>
-
+            <div class="selected-file-panel">
+              <span class="selected-file-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+              <div class="selected-file-copy"><strong>Selected image</strong><p id="compress-original-details" class="image-details">No image selected</p></div>
+              <button id="compress-reset" class="btn-reset" type="button" disabled>Start over</button>
+            </div>
             <p id="compress-status" class="tool-status" role="status" aria-live="polite">Choose an image to get started.</p>
-
             <div class="resizer-workspace">
               <section class="image-panel" aria-labelledby="compress-source-heading">
-                <h4 id="compress-source-heading" class="card-subtitle">Original image</h4>
-                <div class="image-preview">
-                  <img id="compress-source-preview" alt="Original image preview" hidden>
-                  <span id="compress-source-placeholder">Your preview will appear here.</span>
-                </div>
-                <p id="compress-original-details" class="image-details">Original size will appear here.</p>
+                <h4 id="compress-source-heading" class="card-subtitle">Original preview</h4>
+                <div class="image-preview"><img id="compress-source-preview" alt="Original image preview" hidden><span id="compress-source-placeholder">Your preview will appear here.</span></div>
               </section>
-
               <section class="image-panel" aria-labelledby="compress-result-heading">
-                <h4 id="compress-result-heading" class="card-subtitle">Encoded output</h4>
-                <div class="image-preview">
-                  <img id="compress-result-preview" alt="Compressed image preview" hidden>
-                  <span id="compress-result-placeholder">Your output preview will appear here.</span>
-                </div>
+                <h4 id="compress-result-heading" class="card-subtitle">Compressed preview</h4>
+                <div class="image-preview"><img id="compress-result-preview" alt="Compressed image preview" hidden><span id="compress-result-placeholder">Your output preview will appear here.</span></div>
                 <p id="compress-result-details" class="image-details" aria-live="polite">Output size and reduction will appear here.</p>
               </section>
             </div>
-
-            <div class="resizer-controls resize-settings">
+            <div class="resizer-controls resize-settings compressor-settings">
               <div class="field-group">
-                <label for="compress-quality">Quality: <output id="compress-quality-value" for="compress-quality">80%</output></label>
+                <label for="compress-quality">Compression quality: <output id="compress-quality-value" for="compress-quality">80%</output></label>
                 <input id="compress-quality" type="range" min="0.1" max="1" step="0.01" value="0.8" disabled>
                 <small id="compress-quality-note">JPEG and WebP quality setting. PNG uses lossless Canvas output.</small>
               </div>
               <div class="field-group">
-                <p class="note compressor-note">
-                  PNG may not become smaller. Lower quality can reduce JPEG and WebP file size, but can also reduce image quality.
-                  The original file is never changed; the tool reports when re-encoded output is the same size or larger.
-                </p>
+                <label for="compress-max-file-size">Maximum file size</label>
+                <div class="input-suffix"><input id="compress-max-file-size" type="number" min="1" max="100" step="1" value="20" inputmode="numeric"><span>MB</span></div>
+                <small>Choose a limit from 1 to 100 MB. Default: 20 MB.</small>
+              </div>
+              <div class="field-group">
+                <p class="note compressor-note">PNG may not become smaller. Lower quality can reduce JPEG and WebP file size, but can also reduce image quality. The original file is never changed; the tool reports when output is the same size or larger.</p>
               </div>
             </div>
-
-            <div class="resizer-actions">
-              <button id="download-compressed" class="btn btn-primary" type="button" disabled>Download output</button>
-            </div>
+            <div class="tool-primary-actions"><button id="compress-image-action" class="btn btn-primary" type="button" disabled>Compress image</button><button id="download-compressed" class="btn btn-secondary" type="button" disabled>Download compressed image</button></div>
           </article>
 
-          <article class="card resizer-card">
-            <div class="card-head">
-              <h3>YouTube Thumbnail Resizer</h3>
-              <span class="badge">1280 × 720 preset</span>
+          <article class="card tool-panel resizer-card" id="thumbnail-resizer" aria-labelledby="thumbnail-title">
+            <div class="tool-panel-heading">
+              <div><p class="eyebrow">Tool 03</p><h3 id="thumbnail-title">YouTube thumbnail resizer</h3></div>
+              <span class="preset-badge">1280 × 720 preset</span>
             </div>
-            <p>Create a 16:9 thumbnail image with the same local Canvas processing used by the image resizer.</p>
-            <p class="note thumbnail-guidance">
-              Platform requirements can change. Check the
-              <a href="https://support.google.com/youtube/answer/72431?hl=en" target="_blank" rel="noopener noreferrer">official YouTube Help guidance for video thumbnails</a>
-              before publishing. This independent tool is not affiliated with YouTube.
-            </p>
-
+            <p class="tool-description">Prepare a 16:9 image with fit or crop controls. This independent tool is not affiliated with YouTube.</p>
+            <p class="tool-guide-link"><a href="youtube-thumbnail-resizer.html">Read the thumbnail resizing guide</a></p>
+            <p class="note thumbnail-guidance">Platform requirements can change. Check the <a href="https://support.google.com/youtube/answer/72431?hl=en" target="_blank" rel="noopener noreferrer">official YouTube Help guidance for video thumbnails</a> before publishing.</p>
             <div class="resizer-controls">
               <div class="field-group">
                 <label for="thumbnail-file">Choose an image (JPG, PNG, or WebP)</label>
@@ -242,52 +227,32 @@
               </div>
               <div class="field-group">
                 <label for="thumbnail-max-file-size">Maximum file size</label>
-                <div class="input-suffix">
-                  <input id="thumbnail-max-file-size" type="number" min="1" max="100" step="1" value="20" inputmode="numeric">
-                  <span>MB</span>
-                </div>
-                <small>Set a limit from 1 to 100 MB. Default: 20 MB.</small>
+                <div class="input-suffix"><input id="thumbnail-max-file-size" type="number" min="1" max="100" step="1" value="20" inputmode="numeric"><span>MB</span></div>
+                <small>Choose a limit from 1 to 100 MB. Default: 20 MB.</small>
               </div>
             </div>
-
             <p id="thumbnail-status" class="tool-status" role="status" aria-live="polite">Choose an image to get started.</p>
-
             <div class="resizer-workspace">
               <section class="image-panel" aria-labelledby="thumbnail-source-heading">
                 <h4 id="thumbnail-source-heading" class="card-subtitle">Original image</h4>
-                <div class="image-preview">
-                  <img id="thumbnail-source-preview" alt="Original image preview" hidden>
-                  <span id="thumbnail-source-placeholder">Your preview will appear here.</span>
-                </div>
+                <div class="image-preview"><img id="thumbnail-source-preview" alt="Original image preview" hidden><span id="thumbnail-source-placeholder">Your preview will appear here.</span></div>
                 <p id="thumbnail-source-details" class="image-details">Dimensions and file size will appear here.</p>
               </section>
-
               <section class="image-panel" aria-labelledby="thumbnail-result-heading">
                 <h4 id="thumbnail-result-heading" class="card-subtitle">1280 × 720 thumbnail preview</h4>
-                <div class="image-preview thumbnail-result-preview">
-                  <img id="thumbnail-result-preview" alt="1280 by 720 thumbnail output preview" hidden>
-                  <span id="thumbnail-result-placeholder">Your thumbnail preview will appear here.</span>
-                </div>
+                <div class="image-preview thumbnail-result-preview"><img id="thumbnail-result-preview" alt="1280 by 720 thumbnail output preview" hidden><span id="thumbnail-result-placeholder">Your thumbnail preview will appear here.</span></div>
                 <p id="thumbnail-result-details" class="image-details" aria-live="polite">Final output dimensions and file size will appear here.</p>
               </section>
             </div>
-
             <div class="resizer-controls resize-settings">
               <div class="field-group">
                 <label for="thumbnail-mode">Fit or crop</label>
-                <select id="thumbnail-mode" disabled>
-                  <option value="fit">Fit — show the whole image</option>
-                  <option value="crop">Crop — fill the frame</option>
-                </select>
+                <select id="thumbnail-mode" disabled><option value="fit">Fit — show the whole image</option><option value="crop">Crop — fill the frame</option></select>
                 <small>Fit adds letterboxing; PNG keeps it transparent and JPEG uses white.</small>
               </div>
               <div class="field-group">
                 <label for="thumbnail-format">Output format</label>
-                <select id="thumbnail-format" disabled>
-                  <option value="image/jpeg">JPEG</option>
-                  <option value="image/png">PNG</option>
-                  <option value="image/webp">WebP</option>
-                </select>
+                <select id="thumbnail-format" disabled><option value="image/jpeg">JPEG</option><option value="image/png">PNG</option><option value="image/webp">WebP</option></select>
                 <small>JPEG and WebP use 92% quality.</small>
               </div>
             </div>
@@ -303,134 +268,104 @@
                 <small>0% top, 50% center, 100% bottom.</small>
               </div>
             </div>
-
-            <div class="resizer-actions">
-              <button id="download-thumbnail" class="btn btn-primary" type="button" disabled>Download 1280 × 720 thumbnail</button>
-            </div>
+            <div class="resizer-actions"><button id="download-thumbnail" class="btn btn-primary" type="button" disabled>Download 1280 × 720 thumbnail</button></div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ===== How it works ===== -->
-    <section class="section section-alt" id="how-it-works" aria-labelledby="how-title">
+    <section class="section section-muted" id="how-it-works" aria-labelledby="how-title">
       <div class="container">
-        <h2 id="how-title">How to resize an image</h2>
-        <p class="section-intro">Resize images in three steps. Processing happens locally in your browser.</p>
-
+        <div class="section-heading">
+          <p class="eyebrow">A straightforward workflow</p>
+          <h2 id="how-title">From image to ready-to-use</h2>
+          <p class="section-intro">No learning curve. Choose a tool and make the changes you need.</p>
+        </div>
         <ol class="steps">
-          <li>
-            <h3>Choose an image</h3>
-            <p>Pick a file from your own device.</p>
-          </li>
-          <li>
-            <h3>Adjust the settings</h3>
-            <p>Set the output dimensions, choose a format, and check the preview.</p>
-          </li>
-          <li>
-            <h3>Download the result</h3>
-            <p>Save the new image back to your device. Your original file is never changed.</p>
-          </li>
+          <li><span class="step-number" aria-hidden="true">01</span><h3>Choose your image</h3><p>Select a JPG, PNG, or WebP file on your device.</p></li>
+          <li><span class="step-number" aria-hidden="true">02</span><h3>Set it up</h3><p>Adjust dimensions, quality, or fit and crop settings. Preview the result.</p></li>
+          <li><span class="step-number" aria-hidden="true">03</span><h3>Download a copy</h3><p>Save the new image. Your original file remains unchanged.</p></li>
         </ol>
       </div>
     </section>
 
-    <!-- ===== Privacy ===== -->
-    <section class="section" id="privacy" aria-labelledby="privacy-title">
-      <div class="container narrow">
-        <h2 id="privacy-title">Privacy by design</h2>
-        <p>
-          All three tools process images <strong>inside your own browser</strong> using HTML Canvas.
-          Your selected image is not uploaded to a server.
-        </p>
-        <ul class="check-list">
-          <li>No accounts and no sign-up</li>
-          <li>No backend and no database</li>
-          <li>No paid third-party image services</li>
-        </ul>
-        <p class="note">
-          Image decoding, resizing, and re-encoding run locally. The browser may use memory to process large images,
-          so the tool applies configurable file-size and pixel-dimension limits.
-        </p>
-      </div>
-    </section>
-
-    <!-- ===== Guides ===== -->
-    <section class="section section-alt" id="guides" aria-labelledby="guides-title">
+    <section class="section" id="guides" aria-labelledby="guides-title">
       <div class="container">
-        <h2 id="guides-title">Guides</h2>
-        <p class="section-intro">
-          Short, original how-to articles are planned. These topics are not written yet,
-          so they are not linked.
-        </p>
-
-        <div class="card-grid card-grid-3">
-          <article class="card">
-            <span class="badge">Planned</span>
-            <h3>Choosing image sizes for your platforms</h3>
-            <p>How to find the recommended dimensions for thumbnails, banners and post images.</p>
-          </article>
-          <article class="card">
-            <span class="badge">Planned</span>
-            <h3>Compression and image quality</h3>
-            <p>What the quality setting does and how to pick a sensible value.</p>
-          </article>
-          <article class="card">
-            <span class="badge">Planned</span>
-            <h3>Faster pages for bloggers</h3>
-            <p>Why smaller image files can help your pages load more quickly.</p>
-          </article>
+        <div class="section-heading">
+          <p class="eyebrow">Practical help</p>
+          <h2 id="guides-title">Image tool guides</h2>
+          <p class="section-intro">Learn what each tool does and how to use it before opening the editor.</p>
+        </div>
+        <div class="guide-directory">
+          <a class="guide-card" href="image-resizer.html"><strong>Image resizing guide</strong><span>Dimensions, aspect ratio, and output formats.</span></a>
+          <a class="guide-card" href="image-compressor.html"><strong>Image compression guide</strong><span>Quality settings and how to compare file sizes.</span></a>
+          <a class="guide-card" href="youtube-thumbnail-resizer.html"><strong>YouTube thumbnail guide</strong><span>1280 × 720 output, fit, crop, and positioning.</span></a>
+          <a class="guide-card" href="image-format-converter.html"><strong>Image format guide</strong><span>Choose between browser-supported JPEG, PNG, and WebP output.</span></a>
         </div>
       </div>
     </section>
 
-    <!-- ===== FAQ ===== -->
-    <section class="section" id="faq" aria-labelledby="faq-title">
+    <section class="section" id="privacy" aria-labelledby="privacy-title">
+      <div class="container privacy-layout">
+        <div>
+          <p class="eyebrow">Privacy summary</p>
+          <h2 id="privacy-title">Your image stays in your browser</h2>
+          <p class="section-intro">Image decoding and editing use browser features on your device. This site does not send selected image files to an image-processing server. Like most websites, the hosting provider may process basic request information under its own policies.</p>
+          <a class="text-link" href="#terms">Read the terms of use <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="privacy-points">
+          <div class="privacy-point"><span class="privacy-check" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-8"/></svg></span><div><h3>Processed on your device</h3><p>Canvas handles resizing, cropping, and re-encoding in your browser.</p></div></div>
+          <div class="privacy-point"><span class="privacy-check" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-8"/></svg></span><div><h3>No account needed</h3><p>Use the image tools without signing up or connecting an account.</p></div></div>
+          <div class="privacy-point"><span class="privacy-check" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-8"/></svg></span><div><h3>No image-processing API</h3><p>The tools do not depend on a paid third-party image service.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-muted" id="faq" aria-labelledby="faq-title">
       <div class="container narrow">
-        <h2 id="faq-title">Frequently asked questions</h2>
+        <div class="section-heading"><p class="eyebrow">Need a hand?</p><h2 id="faq-title">Frequently asked questions</h2></div>
+        <details class="faq-item"><summary>Are the image tools free?</summary><p>Yes. The tools on this site are free to use, and you do not need an account.</p></details>
+        <details class="faq-item"><summary>Are my images uploaded?</summary><p>No. The image tools process selected files in your browser. Your hosting provider may process ordinary website requests under its own policies, but the tool code does not transmit your selected image for processing.</p></details>
+        <details class="faq-item"><summary>Which file types are supported?</summary><p>The tools accept JPG, PNG, and WebP files. Available output formats depend on the Canvas formats supported by your browser.</p></details>
+        <details class="faq-item"><summary>Will image compression always make a file smaller?</summary><p>No. PNG output may stay the same size or become larger. Lower JPEG and WebP quality can reduce file size but may also reduce image quality. The compressor reports the measured result.</p></details>
+        <details class="faq-item"><summary>Does the thumbnail tool guarantee YouTube requirements?</summary><p>No. It creates a 1280 × 720 image, but platform requirements can change. Check the <a href="https://support.google.com/youtube/answer/72431?hl=en" target="_blank" rel="noopener noreferrer">official YouTube Help guidance</a> before publishing.</p></details>
+      </div>
+    </section>
 
-        <details class="faq-item">
-          <summary>Can I use the tools right now?</summary>
-          <p>Yes. The image resizer, compressor, and 1280 × 720 thumbnail resizer are available now.</p>
-        </details>
+    <section class="section about-section" id="about" aria-labelledby="about-title">
+      <div class="container narrow">
+        <p class="eyebrow">About the toolkit</p>
+        <h2 id="about-title">Made for the work creators do every day</h2>
+        <p>Creator Image Toolkit is a small, browser-based collection of practical image utilities for video creators, bloggers, and social media publishers. It is designed to keep common image tasks simple and to process selected images locally on your device.</p>
+      </div>
+    </section>
 
-        <details class="faq-item">
-          <summary>Will it be free?</summary>
-          <p>The toolkit is free to use and does not rely on paid services or accounts.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>Will my images be uploaded anywhere?</summary>
-          <p>All three tools process images in your browser using Canvas; image files are not uploaded. See the privacy section above for details.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>Who is this for?</summary>
-          <p>YouTubers, streamers, bloggers and social media creators anywhere in the world who need quick image edits.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>Which image formats can I use?</summary>
-          <p>All three tools accept JPG, PNG, and WebP images. Output formats depend on the browser's Canvas support.</p>
-        </details>
+    <section class="section terms-section" id="terms" aria-labelledby="terms-title">
+      <div class="container narrow">
+        <p class="eyebrow">Before you use the tools</p>
+        <h2 id="terms-title">Terms of use</h2>
+        <p>Use the tools at your discretion and review downloaded images before publishing. You are responsible for having the rights to use images you edit and for checking the current requirements of the platform where you share them. Output quality, browser memory, and image-format support can vary by device; no particular result or platform acceptance is guaranteed.</p>
       </div>
     </section>
   </main>
 
-  <!-- ===== Footer ===== -->
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <p class="footer-brand">Creator Image Toolkit</p>
-      <p>Free image tools for creators.</p>
-      <nav aria-label="Footer">
-        <ul class="footer-links">
-          <li><a href="#tools">Tools</a></li>
-          <li><a href="#privacy">Privacy</a></li>
-          <li><a href="#guides">Guides</a></li>
-          <li><a href="#faq">FAQ</a></li>
-        </ul>
-      </nav>
-      <p class="copyright">&copy; <span id="year">2026</span> Creator Image Toolkit. All rights reserved.</p>
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-about">
+          <a class="brand footer-brand" href="#top">
+            <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M3.5 18.5 9 11l3.5 4 3-3.5 5 7H3.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="16.8" cy="7.2" r="2" fill="currentColor"/></svg></span>
+            <span class="brand-name">Creator <span>Image Toolkit</span></span>
+          </a>
+          <p>Free browser-based image tools for creators.</p>
+        </div>
+        <div class="footer-column"><h2>Explore</h2><ul class="footer-links"><li><a href="#tools">Image tools</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#guides">Tool guides</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+        <div class="footer-column"><h2>Information</h2><ul class="footer-links"><li><a href="#about">About</a></li><li><a href="#privacy">Privacy summary</a></li><li><a href="#terms">Terms</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <p class="copyright">&copy; <span id="year">2026</span> Creator Image Toolkit</p>
+        <a href="#top" class="back-to-top">Back to top <span aria-hidden="true">↑</span></a>
+      </div>
     </div>
   </footer>
 </body>

@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Add the deployed site's absolute URL after its public domain is known. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://creatorimagekit.com/</loc>
+  </url>
+  <url>
+    <loc>https://creatorimagekit.com/image-resizer.html</loc>
+  </url>
+  <url>
+    <loc>https://creatorimagekit.com/image-compressor.html</loc>
+  </url>
+  <url>
+    <loc>https://creatorimagekit.com/image-format-converter.html</loc>
+  </url>
+  <url>
+    <loc>https://creatorimagekit.com/youtube-thumbnail-resizer.html</loc>
+  </url>
 </urlset>
