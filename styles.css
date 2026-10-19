@@ -655,3 +655,52 @@ a.tool-card:hover::after { transform: scale(1.18); opacity: 1; }
   .tool-card, .tool-card::after, .hero-upload-card, .tool-upload-zone { transition: none; }
   a.tool-card:hover { transform: none; }
 }
+
+
+/* Homepage trust strip: a deliberate bridge between the hero and tool directory. */
+.trust-strip {
+  position: relative;
+  z-index: 2;
+  padding: 0 0 clamp(2.5rem, 4vw, 3.5rem);
+  background: linear-gradient(180deg, #eef4ff 0%, #fff 100%);
+}
+.trust-strip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: .95rem;
+  min-width: 0;
+  padding: 1.15rem 1.25rem;
+  border: 1px solid #e4e6f5;
+  border-radius: 17px;
+  background: linear-gradient(140deg, rgba(255,255,255,.98), rgba(249,249,255,.96));
+  box-shadow: 0 10px 26px rgba(38, 42, 95, .055), inset 0 1px 0 #fff;
+}
+.trust-icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  border-radius: 14px;
+}
+.trust-icon svg { width: 23px; height: 23px; }
+.trust-icon-purple { color: #5942db; background: linear-gradient(145deg, #f0ebff, #e9eaff); }
+.trust-icon-blue { color: #2479ce; background: linear-gradient(145deg, #e7f3ff, #e7edff); }
+.trust-icon-teal { color: #11846b; background: linear-gradient(145deg, #e2faf2, #e7f7ff); }
+.trust-item > span:last-child { display: grid; gap: .28rem; }
+.trust-item strong { color: #202844; font-size: .94rem; letter-spacing: -.018em; }
+.trust-item small { color: #6b748b; font-size: .8rem; line-height: 1.45; }
+@media (max-width: 800px) {
+  .trust-strip-grid { grid-template-columns: 1fr; gap: .7rem; }
+  .trust-item { padding: .95rem 1.05rem; }
+}
+@media (max-width: 420px) {
+  .trust-icon { width: 42px; height: 42px; flex-basis: 42px; }
+  .trust-item strong { font-size: .9rem; }
+  .trust-item small { font-size: .77rem; }
+}
