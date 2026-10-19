@@ -55,4 +55,10 @@
   <url><loc>https://creatorimagekit.com/favicon-generator.html</loc></url>
   <url><loc>https://creatorimagekit.com/image-to-base64.html</loc></url>
   <url><loc>https://creatorimagekit.com/image-blur-pixelate.html</loc></url>
+  <url>
+    <loc>https://creatorimagekit.com/color-palette-extractor.html</loc>
+  </url>
+  <url>
+    <loc>https://creatorimagekit.com/image-comparison.html</loc>
+  </url>
 </urlset>
