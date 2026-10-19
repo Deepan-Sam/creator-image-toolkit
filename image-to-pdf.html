@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image to PDF Converter | Creator Image Toolkit</title>
+<meta name="description" content="Combine JPG, PNG, and WebP images into a downloadable PDF in your browser. Choose page size, orientation, and fit options.">
+<link rel="canonical" href="https://creatorimagekit.com/image-to-pdf.html">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%234f46e5'/%3E%3Cpath d='M18 72l22-28 14 17 12-14 17 25z' fill='white'/%3E%3Ccircle cx='69' cy='32' r='8' fill='white'/%3E%3C/svg%3E">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1321029480431173" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="image-to-pdf.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+<script src="site.js" defer></script>
+<script src="image-to-pdf.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header"><div class="container header-inner">
+<a class="brand" href="index.html#top" aria-label="Creator Image Toolkit home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M3.5 18.5 9 11l3.5 4 3-3.5 5 7H3.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="16.8" cy="7.2" r="2" fill="currentColor"/></svg></span><span class="brand-name">Creator <span>Image Toolkit</span></span></a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="nav-toggle-label">Menu</span></button><nav class="site-nav" id="site-nav" aria-label="Main navigation"><ul><li><a href="index.html#tools">Tools</a></li><li><a href="index.html#how-it-works">How it works</a></li><li><a href="about.html">About</a></li></ul></nav>
+</div></header>
+<main id="main" class="container page-main">
+<nav aria-label="Breadcrumb" class="breadcrumbs"><a href="index.html">Home</a> / Image to PDF</nav>
+<header class="page-heading"><p class="eyebrow">Free browser-based tool</p><h1>Convert images to PDF</h1><p>Combine JPG, PNG, or WebP images into one PDF. Your selected images are processed in your browser; they are not uploaded to our servers.</p></header>
+<section class="tool-panel" aria-labelledby="upload-heading">
+<h2 id="upload-heading">1. Choose images</h2>
+<label class="file-drop" for="pdf-images"><strong>Select images</strong><span>Choose multiple JPG, PNG, or WebP files · Up to 20 MB each, 30 images total</span></label>
+<input id="pdf-images" type="file" accept="image/jpeg,image/png,image/webp" multiple>
+<p id="file-summary" class="helper-text" aria-live="polite">No images selected.</p>
+<div id="image-list" class="pdf-image-list"></div>
+<div class="pdf-settings">
+<div><label for="page-size">PDF page size</label><select id="page-size"><option value="a4">A4</option><option value="letter">US Letter</option><option value="fit">Fit page to each image</option></select></div>
+<div><label for="orientation">Orientation</label><select id="orientation"><option value="portrait">Portrait</option><option value="landscape">Landscape</option></select></div>
+<div><label for="fit-mode">Image placement</label><select id="fit-mode"><option value="contain">Fit entire image</option><option value="cover">Fill page (may crop)</option></select></div>
+<div><label for="margin">Page margin</label><select id="margin"><option value="10">10 mm</option><option value="0">No margin</option><option value="5">5 mm</option><option value="15">15 mm</option><option value="20">20 mm</option></select></div>
+</div>
+<div class="pdf-actions"><button id="create-pdf" class="button button-primary" type="button" disabled>Create PDF</button><button id="clear-images" class="button button-secondary" type="button">Clear selection</button></div>
+<p id="pdf-status" class="helper-text" role="status" aria-live="polite"></p>
+</section>
+<section class="content-section"><h2>How it works</h2><ol><li>Select images in the order you want them to appear.</li><li>Choose page size, orientation, image placement, and margins.</li><li>Create and download one PDF containing a page for each image.</li></ol><p><strong>Note:</strong> The PDF library is loaded from a third-party CDN. Image files are processed locally in your browser. Very large image collections may use significant device memory.</p></section>
+</main>
+<footer class="site-footer"><div class="container footer-inner"><p>© <span data-current-year></span> Creator Image Toolkit</p><nav aria-label="Footer"><a href="privacy-policy.html">Privacy</a><a href="terms-of-use.html">Terms</a><a href="contact.html">Contact</a></nav></div></footer>
+</body></html>
