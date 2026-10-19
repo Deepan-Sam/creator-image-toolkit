@@ -3,7 +3,8 @@
 const input=document.getElementById('batch-files'), list=document.getElementById('batch-list'), status=document.getElementById('batch-status'), processBtn=document.getElementById('batch-process'), clearBtn=document.getElementById('batch-clear'), results=document.getElementById('batch-results'), quality=document.getElementById('batch-quality'), qualityValue=document.getElementById('batch-quality-value');
 const MAX_BYTES=20*1024*1024, MAX_PIXELS=40000000, MAX_SIDE=16384, MAX_FILES=30, allowed=new Set(['image/jpeg','image/png','image/webp']);
 let files=[], outputs=[], busy=false;
-function revokeOutputs(){outputs.forEach(x=>{if(x.url)URL.revokeObjectURL(x.url)});outputs=[]}\nfunction clearResults(){revokeOutputs();results.replaceChildren()}
+function revokeOutputs(){outputs.forEach(x=>{if(x.url)URL.revokeObjectURL(x.url)});outputs=[]}
+function clearResults(){revokeOutputs();results.replaceChildren()}
 function safeName(name){return name.replace(/\.[^.]+$/,'').replace(/[^a-z0-9_-]+/gi,'-').replace(/^-+|-+$/g,'').slice(0,80)||'image'}
 function sync(){processBtn.disabled=busy||!files.length;clearBtn.disabled=busy||!files.length;input.disabled=busy}
 function renderFiles(){list.replaceChildren();files.forEach((f,i)=>{const row=document.createElement('div');row.className='batch-file-row';const info=document.createElement('div');const name=document.createElement('strong');name.textContent=f.name;const detail=document.createElement('small');detail.textContent=(f.size/1024/1024).toFixed(2)+' MB';info.append(name,detail);const remove=document.createElement('button');remove.type='button';remove.textContent='Remove';remove.setAttribute('aria-label','Remove '+f.name);remove.addEventListener('click',()=>{files.splice(i,1);clearResults();renderFiles();sync();status.textContent=files.length+' image(s) selected.'});row.append(info,remove);list.append(row)});sync()}
