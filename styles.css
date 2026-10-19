@@ -704,3 +704,68 @@ a.tool-card:hover::after { transform: scale(1.18); opacity: 1; }
   .trust-item strong { font-size: .9rem; }
   .trust-item small { font-size: .77rem; }
 }
+
+
+/* Signature tool icons: richer, distinct, and consistent across the directory. */
+.tool-card {
+  --icon-accent: #5942db;
+  --icon-tint: #efebff;
+}
+.tool-card:nth-child(6n+1) { --icon-accent: #5942db; --icon-tint: #e9e4ff; }
+.tool-card:nth-child(6n+2) { --icon-accent: #087f68; --icon-tint: #d9f7ec; }
+.tool-card:nth-child(6n+3) { --icon-accent: #1769c2; --icon-tint: #dceeff; }
+.tool-card:nth-child(6n+4) { --icon-accent: #b76b0b; --icon-tint: #fff0d5; }
+.tool-card:nth-child(6n+5) { --icon-accent: #c13d78; --icon-tint: #ffe4f0; }
+.tool-card:nth-child(6n) { --icon-accent: #087e91; --icon-tint: #d9f7fb; }
+.tool-icon {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: 54px;
+  height: 54px;
+  flex: 0 0 54px;
+  border: 1px solid color-mix(in srgb, var(--icon-accent) 16%, white);
+  border-radius: 17px;
+  color: var(--icon-accent);
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255,255,255,.98), transparent 46%),
+    linear-gradient(145deg, #fff, var(--icon-tint) 78%);
+  box-shadow: 0 7px 15px color-mix(in srgb, var(--icon-accent) 12%, transparent),
+              inset 0 1px 0 rgba(255,255,255,.95);
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+.tool-icon::after {
+  position: absolute;
+  z-index: -1;
+  right: -11px;
+  bottom: -15px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--icon-accent) 12%, transparent);
+  content: "";
+}
+.tool-icon svg {
+  width: 25px;
+  height: 25px;
+  filter: drop-shadow(0 1px 0 rgba(255,255,255,.6));
+}
+.tool-card:hover .tool-icon {
+  transform: translateY(-2px) rotate(-2deg);
+  border-color: color-mix(in srgb, var(--icon-accent) 30%, white);
+  box-shadow: 0 10px 20px color-mix(in srgb, var(--icon-accent) 18%, transparent),
+              inset 0 1px 0 rgba(255,255,255,.95);
+}
+.tool-card-copy .tool-action { color: var(--icon-accent); }
+.tool-card:hover .tool-action { color: var(--icon-accent); }
+.tool-card:focus-visible .tool-icon {
+  outline: 2px solid var(--icon-accent);
+  outline-offset: 3px;
+}
+@media (max-width: 600px) {
+  .tool-icon { width: 49px; height: 49px; flex-basis: 49px; border-radius: 15px; }
+  .tool-icon svg { width: 23px; height: 23px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tool-icon, .tool-card:hover .tool-icon { transition: none; transform: none; }
+}
