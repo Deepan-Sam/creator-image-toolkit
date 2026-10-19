@@ -889,3 +889,43 @@ a.tool-card:hover::before { transform: scaleX(1); opacity: 1; }
 @media (prefers-reduced-motion: reduce) {
   .tool-card::before { transition: none; }
 }
+
+
+/* Accessible Tools dropdown shared by every page. */
+.site-nav .tools-dropdown { position: relative; }
+.site-nav .tools-dropdown-trigger {
+  display: inline-flex; min-height: 42px; align-items: center; justify-content: center;
+  gap: .45rem; padding: .45rem .8rem; border: 0; border-radius: 9px;
+  background: transparent; color: #465169; font: inherit; font-size: .94rem;
+  font-weight: 600; cursor: pointer; transition: color .18s ease, background .18s ease;
+}
+.site-nav .tools-dropdown-trigger:hover,
+.site-nav .tools-dropdown.is-dropdown-open > .tools-dropdown-trigger {
+  background: #f3f4ff; color: var(--primary-dark);
+}
+.tools-dropdown-chevron { font-size: 1.05rem; line-height: 1; transition: transform .18s ease; }
+.tools-dropdown.is-dropdown-open .tools-dropdown-chevron { transform: rotate(180deg); }
+.tools-dropdown-menu {
+  position: absolute; z-index: 100; top: calc(100% + .55rem); left: 0;
+  display: none; width: 270px; max-height: min(70vh, 440px); overflow-y: auto;
+  padding: .45rem; border: 1px solid #e4e6f3; border-radius: 15px;
+  background: rgba(255,255,255,.98); box-shadow: 0 18px 48px rgba(30,35,80,.16);
+}
+.tools-dropdown.is-dropdown-open > .tools-dropdown-menu { display: grid; }
+.site-nav .tools-dropdown-menu a {
+  display: flex; min-height: 40px; align-items: center; padding: .62rem .75rem;
+  border-radius: 9px; color: #35405a; font-size: .88rem; font-weight: 600;
+}
+.site-nav .tools-dropdown-menu a:hover,
+.site-nav .tools-dropdown-menu a:focus-visible { background: #f1efff; color: #4934c6; }
+.site-nav .tools-dropdown-trigger:focus-visible,
+.site-nav .tools-dropdown-menu a:focus-visible { outline: 3px solid rgba(91,66,232,.28); outline-offset: 2px; }
+@media (max-width: 767px) {
+  .site-nav .tools-dropdown { width: 100%; }
+  .site-nav .tools-dropdown-trigger { width: 100%; justify-content: space-between; padding: .7rem .35rem; border-radius: 0; border-top: 1px solid var(--border); }
+  .tools-dropdown-menu { position: static; width: 100%; max-height: 260px; margin: .2rem 0 .6rem; box-shadow: none; background: #fafaff; }
+  .site-nav .tools-dropdown-menu a { padding-left: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-nav .tools-dropdown-trigger, .tools-dropdown-chevron { transition: none; }
+}
