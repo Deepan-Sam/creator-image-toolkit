@@ -1,5 +1,5 @@
 // Social media output sizes are editable practical starting points, not guarantees.
-// Last checked: 2026-10-18. Official references are linked in the page source note.
+// Official YouTube and LinkedIn cover dimensions checked: 2026-10-19. Other values remain editable practical starting points.
 (function () {
   'use strict';
 
@@ -38,7 +38,7 @@
       { id: 'profile', label: 'Profile image · square', width: 800, height: 800 }
     ],
     youtube: [
-      { id: 'thumbnail', label: 'Video thumbnail · 16:9', width: 1280, height: 720 },
+      { id: 'thumbnail', label: 'Video thumbnail · 16:9 (YouTube recommendation)', width: 3840, height: 2160 },
       { id: 'channel-banner', label: 'Channel banner · wide', width: 2560, height: 1440 },
       { id: 'community-square', label: 'Square community image · 1:1', width: 1080, height: 1080 },
       { id: 'community-portrait', label: 'Portrait community image · 4:5', width: 1080, height: 1350 }
@@ -53,7 +53,8 @@
       { id: 'landscape-post', label: 'Landscape feed image · 1.91:1', width: 1200, height: 627 },
       { id: 'square-post', label: 'Square feed image · 1:1', width: 1200, height: 1200 },
       { id: 'portrait-post', label: 'Portrait feed image · 4:5', width: 1200, height: 1500 },
-      { id: 'company-cover', label: 'Company cover · wide', width: 1128, height: 191 },
+      { id: 'company-cover', label: 'LinkedIn Page cover · wide', width: 1512, height: 256 },
+      { id: 'profile-cover', label: 'Personal profile cover · wide', width: 1584, height: 396 },
       { id: 'profile', label: 'Profile image · square', width: 800, height: 800 }
     ],
     x: [
