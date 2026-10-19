@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Image Tools Workspace | Creator Image Toolkit</title>
+  <meta name="description" content="Resize, compress, and prepare YouTube thumbnail images with free browser-based tools.">
+  <link rel="canonical" href="https://creatorimagekit.com/tools.html">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" href="styles.css">
+  <script src="site.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Creator Image Toolkit home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+            <path d="M3.5 18.5 9 11l3.5 4 3-3.5 5 7H3.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <circle cx="16.8" cy="7.2" r="2" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="brand-name">Creator <span>Image Toolkit</span></span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle-label">Menu</span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="#tools">Tools</a></li>
+          <li><a href="#how-it-works">How it works</a></li>
+          <li><a href="#guides">Guides</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
+  <main id="main">
+    <section class="section tools-section" id="tools" aria-labelledby="tools-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Browser-based editors</p>
+          <h1 id="tools-title">Choose an image tool</h1>
+          <p class="section-intro">Select an image, make your changes, preview the result, and download a copy. Your original file remains unchanged.</p>
+        </div>
+        <div class="tool-workspaces">
+          <article class="card tool-panel resizer-card" id="image-resizer" aria-labelledby="resizer-title">
+            <div class="tool-panel-heading">
+              <div><h3 id="resizer-title">Image resizer</h3></div>
+              <span class="availability"><span aria-hidden="true"></span>Ready to use</span>
+            </div>
+            <p class="tool-description">Change an image’s dimensions and download a resized copy. The original file is not changed.</p>
+            <p class="tool-guide-link"><a href="image-resizer.html">Read the image resizing guide</a></p>
+            <p class="tool-guide-link"><a href="image-format-converter.html">Learn about image format conversion</a></p>
+            <div class="tool-upload-zone" id="resizer-dropzone" aria-describedby="resizer-upload-help resizer-status">
+              <span class="tool-upload-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 14v5h14v-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <strong>Drop an image here</strong>
+              <span class="upload-or">or <button id="resizer-browse" class="browse-button" type="button">browse files</button></span>
+              <small id="resizer-upload-help">JPG, PNG, or WebP · Maximum 20 MB by default; change the limit below.</small>
+              <input id="image-file" class="visually-hidden file-picker" type="file" tabindex="-1" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" aria-label="Choose an image to resize">
+            </div>
+            <div class="selected-file-panel">
+              <span class="selected-file-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+              <div class="selected-file-copy"><strong>Selected image</strong><p id="source-details" class="image-details">No image selected</p></div>
+              <button id="resizer-reset" class="btn-reset" type="button" disabled>Start over</button>
+            </div>
+            <p id="resizer-status" class="tool-status" role="status" aria-live="polite">Choose an image to get started.</p>
+            <div class="resizer-workspace">
+              <section class="image-panel" aria-labelledby="source-heading">
+                <h4 id="source-heading" class="card-subtitle">Image preview</h4>
+                <div class="image-preview" id="source-preview-wrap"><img id="source-preview" alt="Original image preview" hidden><span id="source-placeholder">Your preview will appear here.</span></div>
+              </section>
+              <section class="image-panel" aria-labelledby="result-heading">
+                <h4 id="result-heading" class="card-subtitle">Resized preview</h4>
+                <div class="image-preview" id="result-preview-wrap"><img id="result-preview" alt="Resized image preview" hidden><span id="result-placeholder">Your resized preview will appear here.</span></div>
+                <p id="result-details" class="image-details" aria-live="polite">Output dimensions and file size will appear here.</p>
+              </section>
+            </div>
+            <div class="resizer-controls resize-settings">
+              <div class="field-group dimension-fields">
+                <div><label for="output-width">Width (px)</label><input id="output-width" type="number" min="1" max="16384" step="1" inputmode="numeric" aria-describedby="resizer-dimension-help resizer-status" disabled></div>
+                <button id="aspect-lock" class="lock-button" type="button" aria-pressed="true" disabled><span id="lock-label">Ratio locked</span></button>
+                <small class="ratio-warning" id="resizer-dimension-help">Unlocking the ratio stretches the image to fit both dimensions. Dimensions must be whole numbers and outputs are limited to 40 megapixels.</small>
+                <div><label for="output-height">Height (px)</label><input id="output-height" type="number" min="1" max="16384" step="1" inputmode="numeric" aria-describedby="resizer-dimension-help resizer-status" disabled></div>
+              </div>
+              <div class="field-group">
+                <label for="output-format">Output format</label>
+                <select id="output-format" disabled><option value="image/jpeg">JPEG</option><option value="image/png">PNG</option><option value="image/webp">WebP</option></select>
+                <small>JPEG and WebP use 92% quality. Transparent areas become white in JPEG.</small>
+              </div>
+              <div class="field-group">
+                <label for="max-file-size">Maximum file size</label>
+                <div class="input-suffix"><input id="max-file-size" type="number" min="1" max="100" step="1" value="20" inputmode="numeric"><span>MB</span></div>
+                <small>Choose a limit from 1 to 100 MB. Default: 20 MB.</small>
+              </div>
+            </div>
+            <div class="tool-primary-actions"><button id="resize-image-action" class="btn btn-primary" type="button" disabled>Resize image</button><button id="download-image" class="btn btn-secondary" type="button" disabled>Download resized image</button></div>
+          </article>
+
+          <article class="card tool-panel resizer-card" id="image-compressor" aria-labelledby="compressor-title">
+            <div class="tool-panel-heading">
+              <div><h3 id="compressor-title">Image compressor</h3></div>
+              <span class="availability"><span aria-hidden="true"></span>Ready to use</span>
+            </div>
+            <p class="tool-description">Re-encode an image in your browser, compare the result, and download when it’s ready.</p>
+            <p class="tool-guide-link"><a href="image-compressor.html">Read the image compression guide</a></p>
+            <div class="tool-upload-zone" id="compress-dropzone" aria-describedby="compress-upload-help compress-status">
+              <span class="tool-upload-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 14v5h14v-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <strong>Drop an image here</strong>
+              <span class="upload-or">or <button id="compress-browse" class="browse-button" type="button">browse files</button></span>
+              <small id="compress-upload-help">JPG, PNG, or WebP · Maximum 20 MB by default; change the limit below.</small>
+              <input id="compress-file" class="visually-hidden file-picker" type="file" tabindex="-1" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" aria-label="Choose an image to compress">
+            </div>
+            <div class="selected-file-panel">
+              <span class="selected-file-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+              <div class="selected-file-copy"><strong>Selected image</strong><p id="compress-original-details" class="image-details">No image selected</p></div>
+              <button id="compress-reset" class="btn-reset" type="button" disabled>Start over</button>
+            </div>
+            <p id="compress-status" class="tool-status" role="status" aria-live="polite">Choose an image to get started.</p>
+            <div class="resizer-workspace">
+              <section class="image-panel" aria-labelledby="compress-source-heading">
+                <h4 id="compress-source-heading" class="card-subtitle">Original preview</h4>
+                <div class="image-preview"><img id="compress-source-preview" alt="Original image preview" hidden><span id="compress-source-placeholder">Your preview will appear here.</span></div>
+              </section>
+              <section class="image-panel" aria-labelledby="compress-result-heading">
+                <h4 id="compress-result-heading" class="card-subtitle">Compressed preview</h4>
+                <div class="image-preview"><img id="compress-result-preview" alt="Compressed image preview" hidden><span id="compress-result-placeholder">Your output preview will appear here.</span></div>
+                <p id="compress-result-details" class="image-details" aria-live="polite">Output size and reduction will appear here.</p>
+              </section>
+            </div>
+            <div class="resizer-controls resize-settings compressor-settings">
+              <div class="field-group">
+                <label for="compress-quality">Compression quality: <output id="compress-quality-value" for="compress-quality">80%</output></label>
+                <input id="compress-quality" type="range" min="0.1" max="1" step="0.01" value="0.8" disabled>
+                <small id="compress-quality-note">JPEG and WebP quality setting. PNG uses lossless Canvas output.</small>
+              </div>
+              <div class="field-group">
+                <label for="compress-max-file-size">Maximum file size</label>
+                <div class="input-suffix"><input id="compress-max-file-size" type="number" min="1" max="100" step="1" value="20" inputmode="numeric"><span>MB</span></div>
+                <small>Choose a limit from 1 to 100 MB. Default: 20 MB.</small>
+              </div>
+              <div class="field-group">
+                <p class="note compressor-note">PNG may not become smaller. Lower quality can reduce JPEG and WebP file size, but can also reduce image quality. The original file is never changed; the tool reports when output is the same size or larger.</p>
+              </div>
+            </div>
+            <div class="tool-primary-actions"><button id="compress-image-action" class="btn btn-primary" type="button" disabled>Compress image</button><button id="download-compressed" class="btn btn-secondary" type="button" disabled>Download compressed image</button></div>
+          </article>
+
+          <article class="card tool-panel resizer-card" id="thumbnail-resizer" aria-labelledby="thumbnail-title">
+            <div class="tool-panel-heading">
+              <div><h3 id="thumbnail-title">YouTube thumbnail resizer</h3></div>
+              <span class="preset-badge">1280 × 720 preset</span>
+            </div>
+            <p class="tool-description">Prepare a 16:9 image with fit or crop controls. This independent tool is not affiliated with YouTube.</p>
+            <p class="tool-guide-link"><a href="youtube-thumbnail-resizer.html">Read the thumbnail resizing guide</a></p>
+            <p class="note thumbnail-guidance">Platform requirements can change. Check the <a href="https://support.google.com/youtube/answer/72431?hl=en" target="_blank" rel="noopener noreferrer">official YouTube Help guidance for video thumbnails</a> before publishing.</p>
+            <div class="resizer-controls">
+              <div class="field-group">
+                <label for="thumbnail-file">Choose an image (JPG, PNG, or WebP)</label>
+                <input id="thumbnail-file" type="file" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp">
+              </div>
+              <div class="field-group">
+                <label for="thumbnail-max-file-size">Maximum file size</label>
+                <div class="input-suffix"><input id="thumbnail-max-file-size" type="number" min="1" max="100" step="1" value="20" inputmode="numeric"><span>MB</span></div>
+                <small>Choose a limit from 1 to 100 MB. Default: 20 MB.</small>
+              </div>
+            </div>
+            <p id="thumbnail-status" class="tool-status" role="status" aria-live="polite">Choose an image to get started.</p>
+            <div class="resizer-workspace">
+              <section class="image-panel" aria-labelledby="thumbnail-source-heading">
+                <h4 id="thumbnail-source-heading" class="card-subtitle">Original image</h4>
+                <div class="image-preview"><img id="thumbnail-source-preview" alt="Original image preview" hidden><span id="thumbnail-source-placeholder">Your preview will appear here.</span></div>
+                <p id="thumbnail-source-details" class="image-details">Dimensions and file size will appear here.</p>
+              </section>
+              <section class="image-panel" aria-labelledby="thumbnail-result-heading">
+                <h4 id="thumbnail-result-heading" class="card-subtitle">1280 × 720 thumbnail preview</h4>
+                <div class="image-preview thumbnail-result-preview"><img id="thumbnail-result-preview" alt="1280 by 720 thumbnail output preview" hidden><span id="thumbnail-result-placeholder">Your thumbnail preview will appear here.</span></div>
+                <p id="thumbnail-result-details" class="image-details" aria-live="polite">Final output dimensions and file size will appear here.</p>
+              </section>
+            </div>
+            <div class="resizer-controls resize-settings">
+              <div class="field-group">
+                <label for="thumbnail-mode">Fit or crop</label>
+                <select id="thumbnail-mode" disabled><option value="fit">Fit — show the whole image</option><option value="crop">Crop — fill the frame</option></select>
+                <small>Fit adds letterboxing; PNG keeps it transparent and JPEG uses white.</small>
+              </div>
+              <div class="field-group">
+                <label for="thumbnail-format">Output format</label>
+                <select id="thumbnail-format" disabled><option value="image/jpeg">JPEG</option><option value="image/png">PNG</option><option value="image/webp">WebP</option></select>
+                <small>JPEG and WebP use 92% quality.</small>
+              </div>
+            </div>
+            <div id="thumbnail-crop-controls" class="resizer-controls crop-controls" hidden>
+              <div class="field-group">
+                <label for="thumbnail-position-x">Horizontal crop position: <output id="thumbnail-position-x-value" for="thumbnail-position-x">50%</output></label>
+                <input id="thumbnail-position-x" type="range" min="0" max="100" step="1" value="50" disabled>
+                <small>0% left, 50% center, 100% right.</small>
+              </div>
+              <div class="field-group">
+                <label for="thumbnail-position-y">Vertical crop position: <output id="thumbnail-position-y-value" for="thumbnail-position-y">50%</output></label>
+                <input id="thumbnail-position-y" type="range" min="0" max="100" step="1" value="50" disabled>
+                <small>0% top, 50% center, 100% bottom.</small>
+              </div>
+            </div>
+            <div class="resizer-actions"><button id="download-thumbnail" class="btn btn-primary" type="button" disabled>Download 1280 × 720 thumbnail</button></div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p class="copyright">&copy; <span id="year">2026</span> Creator Image Toolkit</p>
+        <a href="index.html#tools" class="back-to-top">Back to all tools <span aria-hidden="true">↑</span></a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
