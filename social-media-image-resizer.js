@@ -1,5 +1,5 @@
 // Social media output sizes are editable practical starting points, not guarantees.
-// Last checked: 2026-10-18. Official references are linked in the page source note.
+// Official YouTube and LinkedIn cover dimensions checked: 2026-10-19. Other values remain editable practical starting points.
 (function () {
   'use strict';
 
