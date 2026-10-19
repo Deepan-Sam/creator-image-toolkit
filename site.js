@@ -8,6 +8,48 @@
   var nav = document.getElementById('site-nav');
   var label = document.querySelector('.nav-toggle-label');
 
+  // Keep Home and Guides discoverable in the shared navigation on every route.
+  if (nav) {
+    var navList = nav.querySelector('ul');
+    if (navList) {
+      var directLinks = Array.prototype.slice.call(navList.querySelectorAll(':scope > li > a'));
+      var hasHome = directLinks.some(function (link) {
+        return link.textContent.trim().toLowerCase() === 'home';
+      });
+      if (!hasHome) {
+        var homeItem = document.createElement('li');
+        var homeLink = document.createElement('a');
+        homeLink.href = '/';
+        homeLink.textContent = 'Home';
+        homeItem.appendChild(homeLink);
+        navList.insertBefore(homeItem, navList.firstElementChild);
+      }
+
+      var guideLink = directLinks.find(function (link) {
+        return link.textContent.trim().toLowerCase() === 'guides';
+      });
+      if (guideLink) {
+        if (window.location.pathname !== '/' && !/\/index\.html$/.test(window.location.pathname)) {
+          guideLink.href = '/index.html#guides';
+        } else {
+          guideLink.href = '#guides';
+        }
+      } else {
+        var guideItem = document.createElement('li');
+        var guideAnchor = document.createElement('a');
+        guideAnchor.href = window.location.pathname === '/' || /\/index\.html$/.test(window.location.pathname) ? '#guides' : '/index.html#guides';
+        guideAnchor.textContent = 'Guides';
+        guideItem.appendChild(guideAnchor);
+        var aboutItem = Array.prototype.find.call(navList.querySelectorAll(':scope > li'), function (item) {
+          var link = item.querySelector(':scope > a');
+          return link && link.textContent.trim().toLowerCase() === 'about';
+        });
+        navList.insertBefore(guideItem, aboutItem || null);
+      }
+    }
+  }
+
+
   function setMenu(open) {
     toggle.setAttribute('aria-expanded', String(open));
     nav.classList.toggle('is-open', open);
