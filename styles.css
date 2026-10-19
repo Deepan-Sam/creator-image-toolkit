@@ -1117,3 +1117,48 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
   .guide-card, .tool-card, .tool-icon, .btn-primary { transition: none !important; }
   .guide-card:hover, .tool-card:hover, .tool-card:hover .tool-icon { transform: none !important; }
 }
+
+.hero-creative-visual {
+  position: relative;
+  display: flex;
+  width: min(100%, 310px);
+  min-height: 105px;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 0 auto 1.1rem;
+  isolation: isolate;
+}
+.hero-creative-visual::before {
+  position: absolute;
+  z-index: -1;
+  inset: 12px 28px;
+  border-radius: 50%;
+  background: linear-gradient(100deg, rgba(115,82,242,.09), rgba(63,111,239,.09), rgba(255,121,95,.08));
+  filter: blur(2px);
+  content: "";
+}
+.creative-tile {
+  display: grid;
+  width: 72px;
+  height: 76px;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.85);
+  border-radius: 20px;
+  box-shadow: 0 12px 28px rgba(43,39,105,.12), inset 0 1px 0 rgba(255,255,255,.95);
+}
+.creative-tile svg { width: 39px; height: 39px; }
+.creative-tile-violet { color: #6745e8; background: linear-gradient(145deg,#f3efff,#e4dcff); transform: rotate(-8deg) translateY(3px); }
+.creative-tile-blue { z-index: 1; color: #3264e5; background: linear-gradient(145deg,#eff5ff,#dce9ff); transform: translateY(-7px); }
+.creative-tile-coral { color: #e95f60; background: linear-gradient(145deg,#fff1e9,#ffe0db); transform: rotate(8deg) translateY(4px); }
+.creative-spark { position: absolute; display: block; width: 10px; height: 10px; border-radius: 3px; transform: rotate(45deg); }
+.creative-spark-one { top: 8px; left: 24px; background: #ff8a6d; }
+.creative-spark-two { right: 22px; bottom: 12px; width: 7px; height: 7px; background: #25b8b0; }
+@media (max-width: 767px) {
+  .hero-creative-visual { min-height: 95px; margin-bottom: .6rem; }
+  .creative-tile { width: 64px; height: 67px; border-radius: 17px; }
+  .creative-tile svg { width: 34px; height: 34px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .creative-tile { transform: none; }
+}
