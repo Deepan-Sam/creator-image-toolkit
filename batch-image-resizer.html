@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="batch-image-resizer.css">
 <script src="site.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" defer></script>
 <script src="batch-image-resizer.js" defer></script>
 </head>
 <body>
@@ -50,7 +51,7 @@
 <div class="batch-actions"><button id="batch-process" class="button button-primary" type="button" disabled>Resize all images</button><button id="batch-clear" class="button button-secondary" type="button" disabled>Clear list</button></div>
 </div>
 </section>
-<section class="batch-results" aria-labelledby="batch-results-title"><h2 id="batch-results-title">3. Download resized images</h2><p>Each finished image will appear here with its own download link.</p><div id="batch-results" class="batch-result-grid"></div></section>
+<section class="batch-results" aria-labelledby="batch-results-title"><h2 id="batch-results-title">3. Download resized images</h2><p>Download images individually or bundle successful results into one ZIP file.</p><div class="batch-actions batch-download-actions"><button id="batch-download-zip" class="button button-primary" type="button" disabled>Download all as ZIP</button></div><div id="batch-results" class="batch-result-grid"></div></section>
 <section class="content-section"><h2>How batch resizing works</h2><ol><li>Select multiple JPG, PNG, or WebP images.</li><li>Set shared dimensions, fit mode, and output format.</li><li>Choose Resize all images and download each result.</li></ol><p><strong>Privacy:</strong> Processing happens on your device. This tool does not upload selected images. Very large batches may use significant browser memory, so process smaller groups if your device slows down.</p><p><strong>Fit modes:</strong> Fit inside preserves the entire image with empty space where needed; Fill dimensions crops the edges to fill the target; Stretch changes the proportions to match the exact dimensions.</p></section>
 </article></main>
 <footer class="site-footer"><div class="container"><p>© <span data-current-year></span> Creator Image Toolkit. Free browser-based image tools.</p><nav aria-label="Footer"><a href="privacy-policy.html">Privacy</a><a href="terms-of-use.html">Terms</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav></div></footer>
