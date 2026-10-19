@@ -215,6 +215,31 @@
       </div>
     </section>
   </main>
+  <script>
+    // When a tool card or guide links to a specific editor, show only that editor.
+    // Visiting tools.html without a tool hash keeps the full directory visible.
+    (function () {
+      var toolIds = ['image-resizer', 'image-compressor', 'thumbnail-resizer'];
+      function showSelectedTool() {
+        var selectedId = window.location.hash.slice(1);
+        var isToolId = toolIds.indexOf(selectedId) !== -1;
+        toolIds.forEach(function (id) {
+          var panel = document.getElementById(id);
+          if (panel) panel.hidden = isToolId && id !== selectedId;
+        });
+        var heading = document.getElementById('tools-title');
+        if (heading && isToolId) {
+          var panel = document.getElementById(selectedId);
+          var title = panel && panel.querySelector('h3');
+          heading.textContent = title ? title.textContent : 'Image tool';
+        } else if (heading) {
+          heading.textContent = 'Choose an image tool';
+        }
+      }
+      window.addEventListener('hashchange', showSelectedTool);
+      showSelectedTool();
+    }());
+  </script>
   <footer class="site-footer">
     <div class="container">
       <div class="footer-bottom">
